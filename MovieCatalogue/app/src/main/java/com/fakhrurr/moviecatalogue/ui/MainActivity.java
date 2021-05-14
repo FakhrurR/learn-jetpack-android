@@ -1,8 +1,10 @@
-package com.fakhrurr.moviecatalogue;
+package com.fakhrurr.moviecatalogue.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.fakhrurr.moviecatalogue.R;
 
 public class MainActivity extends AppCompatActivity {
 
