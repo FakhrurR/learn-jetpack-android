@@ -29,7 +29,7 @@
             android:id="@+id/title_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/label_title_name"
+            android:text="@string/dummy_title_name"
             android:textSize="15sp"
             android:layout_marginStart="16dp"
             android:textStyle="bold"
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:maxLines="8"
-            android:text="@string/label_date"
+            android:text="@string/dummy_date"
             android:textSize="12sp"
             android:textStyle="italic"
             app:layout_constraintEnd_toEndOf="parent"
@@ -50,13 +50,13 @@
             app:layout_constraintTop_toBottomOf="@id/title_name" />
 
         <TextView
-            android:id="@+id/author"
+            android:id="@+id/genre"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:maxLines="8"
-            android:text="@string/label_authors_name"
-            android:textSize="12sp"
+            android:text="@string/dummy_genre"
+            android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_item"
             app:layout_constraintTop_toBottomOf="@id/date_movie" />
@@ -66,12 +66,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:maxLines="8"
-            android:text="@string/label_description"
+            android:layout_marginTop="10dp"
+            android:maxLines="5"
+            android:text="@string/dummy_description"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/img_item"
-            app:layout_constraintTop_toBottomOf="@id/author" />
+            app:layout_constraintTop_toBottomOf="@id/genre" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

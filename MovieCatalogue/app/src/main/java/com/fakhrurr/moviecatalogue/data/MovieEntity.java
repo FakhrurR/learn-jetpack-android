@@ -5,15 +5,15 @@ public class MovieEntity {
     private String title;
     private String description;
     private String date;
-    private String author;
+    private String genre;
     private String imagePath;
 
-    public MovieEntity(String movieId, String title, String description, String date, String author, String imagePath) {
+    public MovieEntity(String movieId, String title, String description, String date, String genre, String imagePath) {
         this.movieId = movieId;
         this.title = title;
         this.description = description;
         this.date = date;
-        this.author = author;
+        this.genre = genre;
         this.imagePath = imagePath;
     }
 
@@ -49,12 +49,12 @@ public class MovieEntity {
         this.date = date;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public String getImagePath() {
