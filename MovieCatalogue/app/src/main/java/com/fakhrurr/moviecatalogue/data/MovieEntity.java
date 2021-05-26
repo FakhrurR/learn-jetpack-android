@@ -6,9 +6,9 @@ public class MovieEntity {
     private String description;
     private String date;
     private String genre;
-    private String imagePath;
+    private int imagePath;
 
-    public MovieEntity(String movieId, String title, String description, String date, String genre, String imagePath) {
+    public MovieEntity(String movieId, String title, String description, String date, String genre, int imagePath) {
         this.movieId = movieId;
         this.title = title;
         this.description = description;
@@ -57,11 +57,11 @@ public class MovieEntity {
         this.genre = genre;
     }
 
-    public String getImagePath() {
+    public int getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    public void setImagePath(int imagePath) {
         this.imagePath = imagePath;
     }
 

@@ -13,4 +13,6 @@
     <string name="genre">Genre</string>
     <string name="date_movie">Date</string>
     <string name="label_trailer">Trailer</string>
+    <string name="label_tv_show">TV Show</string>
+    <string name="label_movie">Movie</string>
 </resources>
