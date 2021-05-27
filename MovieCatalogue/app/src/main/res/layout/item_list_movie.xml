@@ -19,7 +19,6 @@
             android:scaleType="fitXY"
             android:contentDescription="@string/label_dummy"
             app:shapeAppearanceOverlay="@style/roundedImageView"
-
             app:srcCompat="@drawable/poster_alita"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

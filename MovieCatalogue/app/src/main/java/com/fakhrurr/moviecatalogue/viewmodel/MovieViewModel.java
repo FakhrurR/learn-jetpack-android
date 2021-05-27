@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel;
 import com.fakhrurr.moviecatalogue.data.MovieEntity;
 import com.fakhrurr.moviecatalogue.utils.DummyData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MovieViewModel extends ViewModel {

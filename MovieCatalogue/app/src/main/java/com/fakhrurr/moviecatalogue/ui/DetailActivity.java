@@ -1,11 +1,18 @@
 package com.fakhrurr.moviecatalogue.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.fakhrurr.moviecatalogue.R;
+import com.fakhrurr.moviecatalogue.data.MovieEntity;
 import com.fakhrurr.moviecatalogue.databinding.ActivityDetailBinding;
+import com.fakhrurr.moviecatalogue.viewmodel.DetaillViewModel;
+
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -17,7 +24,36 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityDetailBinding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(activityDetailBinding.getRoot());
-        setSupportActionBar(activityDetailBinding.toolbar);
-        activityDetailBinding.toolbar.setTitle("");
+        DetaillViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DetaillViewModel.class);
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+            getSupportActionBar().setTitle("Detail");
+        }
+
+        String movieId = getIntent().getStringExtra(EXTRA_COURSE);
+        if (movieId != null) {
+            viewModel.setSelectedMovie(movieId);
+            final MovieEntity movieEntity = viewModel.getMovie();
+            movieDetail(movieEntity);
+        }
+    }
+
+    private void movieDetail(MovieEntity movieEntity) {
+        Glide.with(this)
+                .load(movieEntity.getImagePath())
+                .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
+                .into(activityDetailBinding.detailContent.imagePoster);
+        activityDetailBinding.detailContent.textTitle.setText(movieEntity.getTitle());
+        activityDetailBinding.detailContent.textDate.setText(movieEntity.getDate());
+        activityDetailBinding.detailContent.textGenre.setText(movieEntity.getGenre());
+        activityDetailBinding.detailContent.contentTextDescription.setText(movieEntity.getDescription());
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }
