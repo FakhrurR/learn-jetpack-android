@@ -9,8 +9,8 @@ import java.util.List;
 
 import static java.lang.Integer.parseInt;
 
-public class DetaillViewModel extends ViewModel {
-    private DummyData dummyData = new DummyData();
+public class DetailViewModel extends ViewModel {
+    private final DummyData dummyData = new DummyData();
     private String movieId;
 
     public void setSelectedMovie(String movieId) {
@@ -19,7 +19,7 @@ public class DetaillViewModel extends ViewModel {
 
     public MovieEntity getMovie() {
         MovieEntity movie = null;
-        List<MovieEntity> movieEntities = DummyData.generateAllDummyMovies(movieId);
+        List<MovieEntity> movieEntities = DummyData.generateAllDummyMovies();
         for (int i = 0; i < movieEntities.size(); i++) {
             MovieEntity movieEntity = movieEntities.get(i);
             if (movieEntity.getMovieId().equals(movieId)) {

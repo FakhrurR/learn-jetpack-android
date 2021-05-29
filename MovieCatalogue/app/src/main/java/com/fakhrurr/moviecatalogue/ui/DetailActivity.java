@@ -10,9 +10,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.fakhrurr.moviecatalogue.R;
 import com.fakhrurr.moviecatalogue.data.MovieEntity;
 import com.fakhrurr.moviecatalogue.databinding.ActivityDetailBinding;
-import com.fakhrurr.moviecatalogue.viewmodel.DetaillViewModel;
-
-import java.util.List;
+import com.fakhrurr.moviecatalogue.viewmodel.DetailViewModel;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -24,7 +22,7 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityDetailBinding = ActivityDetailBinding.inflate(getLayoutInflater());
         setContentView(activityDetailBinding.getRoot());
-        DetaillViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DetaillViewModel.class);
+        DetailViewModel viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DetailViewModel.class);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
