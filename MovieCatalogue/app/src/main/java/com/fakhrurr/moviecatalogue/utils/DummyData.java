@@ -103,7 +103,7 @@ public class DummyData {
                 "Panah adalah menceritakan kembali petualangan dari legendaris DC pahlawan Green Arrow",
                 "Oktober 10, 2012",
                 "Kejahatan, Drama, Misteri, Aksi & Petualangan",
-                R.drawable.poster_aquaman));
+                R.drawable.poster_arrow));
 
         tvShowArrayList.add(new MovieEntity(
                 "12",
@@ -111,19 +111,19 @@ public class DummyData {
                 "The Doom Patrol’s members each suffered horrible accidents that gave them superhuman abilities — but also left them scarred and disfigured. Traumatized and downtrodden, the team found purpose through The Chief, who brought them together to investigate the weirdest phenomena in existence — and to protect Earth from what they find.",
                 "Februari 15, 2019",
                 "Sci-fi & Fantasy, Komedi, Drama",
-                R.drawable.poster_aquaman));
+                R.drawable.poster_doom_patrol));
 
         tvShowArrayList.add(new MovieEntity(
                 "13",
-                "ナルト 疾風伝",
-                "Panah adalah menceritakan kembali petualangan dari legendaris DC pahlawan Green Arrow",
-                "Februari 15, 2007",
+                "The Flash",
+                "Setelah akselerator partikel menyebabkan badai aneh, Penyelidik CSI Barry Allen disambar petir dan jatuh koma. Beberapa bulan kemudian dia terbangun dengan kekuatan kecepatan super, memberinya kemampuan untuk bergerak melalui Central City seperti malaikat penjaga yang tak terlihat. Meskipun awalnya senang dengan kekuatan barunya, Barry terkejut menemukan bahwa dia bukan satu-satunya \"manusia meta\" yang diciptakan setelah ledakan akselerator - dan tidak semua orang menggunakan kekuatan baru mereka untuk kebaikan. Barry bermitra dengan S.T.A.R. Lab dan mendedikasikan hidupnya untuk melindungi yang tidak bersalah. Untuk saat ini, hanya beberapa teman dekat dan rekan yang tahu bahwa Barry secara harfiah adalah manusia tercepat, tetapi tidak lama sebelum dunia mengetahui apa yang menjadi Barry Allen ... The Flash.",
+                "Oktober 7, 2014",
                 "Animasi, Aksi & Petualangan, Sci-fi & Fantasy",
-                R.drawable.poster_arrow));
+                R.drawable.poster_flash));
 
         tvShowArrayList.add(new MovieEntity(
                 "14",
-                "The Flash",
+                "The ナルト 疾風伝 (2007)",
                 "Naruto Shippuuden adalah kelanjutan dari serial TV animasi asli Naruto. Kisah ini berkisah tentang Uzumaki Naruto yang lebih tua dan sedikit lebih matang dan upayanya untuk menyelamatkan temannya Uchiha Sasuke dari cengkeraman Shinobi seperti ular, Orochimaru. Setelah 2 setengah tahun, Naruto akhirnya kembali ke desanya Konoha, dan mulai mewujudkan ambisinya, meskipun itu tidak akan mudah, karena Ia telah mengumpulkan beberapa musuh (lebih berbahaya), seperti organisasi shinobi. ; Akatsuki.",
                 "Oktober 7, 2014",
                 "Drama, Sci-fi & Fantasy",
@@ -269,7 +269,7 @@ public class DummyData {
                 "Panah adalah menceritakan kembali petualangan dari legendaris DC pahlawan Green Arrow",
                 "Oktober 10, 2012",
                 "Kejahatan, Drama, Misteri, Aksi & Petualangan",
-                R.drawable.poster_aquaman));
+                R.drawable.poster_arrow));
 
         movieEntityArrayList.add(new MovieEntity(
                 "12",
@@ -277,19 +277,19 @@ public class DummyData {
                 "The Doom Patrol’s members each suffered horrible accidents that gave them superhuman abilities — but also left them scarred and disfigured. Traumatized and downtrodden, the team found purpose through The Chief, who brought them together to investigate the weirdest phenomena in existence — and to protect Earth from what they find.",
                 "Februari 15, 2019",
                 "Sci-fi & Fantasy, Komedi, Drama",
-                R.drawable.poster_aquaman));
+                R.drawable.poster_doom_patrol));
 
         movieEntityArrayList.add(new MovieEntity(
                 "13",
-                "ナルト 疾風伝",
-                "Panah adalah menceritakan kembali petualangan dari legendaris DC pahlawan Green Arrow",
-                "Februari 15, 2007",
+                "The Flash",
+                "Setelah akselerator partikel menyebabkan badai aneh, Penyelidik CSI Barry Allen disambar petir dan jatuh koma. Beberapa bulan kemudian dia terbangun dengan kekuatan kecepatan super, memberinya kemampuan untuk bergerak melalui Central City seperti malaikat penjaga yang tak terlihat. Meskipun awalnya senang dengan kekuatan barunya, Barry terkejut menemukan bahwa dia bukan satu-satunya \"manusia meta\" yang diciptakan setelah ledakan akselerator - dan tidak semua orang menggunakan kekuatan baru mereka untuk kebaikan. Barry bermitra dengan S.T.A.R. Lab dan mendedikasikan hidupnya untuk melindungi yang tidak bersalah. Untuk saat ini, hanya beberapa teman dekat dan rekan yang tahu bahwa Barry secara harfiah adalah manusia tercepat, tetapi tidak lama sebelum dunia mengetahui apa yang menjadi Barry Allen ... The Flash.",
+                "Oktober 7, 2014",
                 "Animasi, Aksi & Petualangan, Sci-fi & Fantasy",
-                R.drawable.poster_arrow));
+                R.drawable.poster_flash));
 
         movieEntityArrayList.add(new MovieEntity(
                 "14",
-                "The Flash",
+                "ナルト 疾風伝 (2007)",
                 "Naruto Shippuuden adalah kelanjutan dari serial TV animasi asli Naruto. Kisah ini berkisah tentang Uzumaki Naruto yang lebih tua dan sedikit lebih matang dan upayanya untuk menyelamatkan temannya Uchiha Sasuke dari cengkeraman Shinobi seperti ular, Orochimaru. Setelah 2 setengah tahun, Naruto akhirnya kembali ke desanya Konoha, dan mulai mewujudkan ambisinya, meskipun itu tidak akan mudah, karena Ia telah mengumpulkan beberapa musuh (lebih berbahaya), seperti organisasi shinobi. ; Akatsuki.",
                 "Oktober 7, 2014",
                 "Drama, Sci-fi & Fantasy",
