@@ -43,13 +43,17 @@ public class MovieFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(MovieViewModel.class);
         if (getActivity() != null) {
+            movieFragmentBinding.emptyData.setVisibility(View.GONE);
             List<MovieEntity> movie = mViewModel.getMovies();
             MovieAdapter adapter = new MovieAdapter();
             adapter.setMovies(movie);
             movieFragmentBinding.rvMovie.setLayoutManager(new LinearLayoutManager(getContext()));
             movieFragmentBinding.rvMovie.setHasFixedSize(true);
             movieFragmentBinding.rvMovie.setAdapter(adapter);
+
+            if(movie.isEmpty()) {
+                movieFragmentBinding.emptyData.setVisibility(View.VISIBLE);
+            }
         }
     }
-
 }

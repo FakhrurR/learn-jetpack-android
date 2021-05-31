@@ -10,7 +10,7 @@ import java.util.List;
 import static java.lang.Integer.parseInt;
 
 public class DetailViewModel extends ViewModel {
-    private final DummyData dummyData = new DummyData();
+    private DummyData dummyData;
     private String movieId;
 
     public void setSelectedMovie(String movieId) {

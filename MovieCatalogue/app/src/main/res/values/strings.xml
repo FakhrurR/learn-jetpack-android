@@ -16,4 +16,5 @@
     <string name="label_tv_show">TV Show</string>
     <string name="label_movie">Movie</string>
     <string name="label_synopsis">Synopsis</string>
+    <string name="label_empty">Data Kosong</string>
 </resources>

@@ -42,20 +42,17 @@ public class TvShowFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if (getActivity() != null) {
-            List<MovieEntity> movie = DummyData.generateDummyTVShow();
+            tvShowFragmentBinding.emptyData.setVisibility(View.GONE);
+            List<MovieEntity> tvShow = DummyData.generateDummyTVShow();
             MovieAdapter adapter = new MovieAdapter();
-            adapter.setMovies(movie);
+            adapter.setMovies(tvShow);
             tvShowFragmentBinding.rvTvShow.setLayoutManager(new LinearLayoutManager(getContext()));
             tvShowFragmentBinding.rvTvShow.setHasFixedSize(true);
             tvShowFragmentBinding.rvTvShow.setAdapter(adapter);
+
+            if(tvShow.isEmpty()) {
+                tvShowFragmentBinding.emptyData.setVisibility(View.VISIBLE);
+            }
         }
     }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(TvShowViewModel.class);
-        // TODO: Use the ViewModel
-    }
-
 }

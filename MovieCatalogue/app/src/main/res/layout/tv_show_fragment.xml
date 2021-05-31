@@ -34,4 +34,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/empty_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/label_empty"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:gravity="center"
+        tools:showIn="@layout/movie_fragment" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
