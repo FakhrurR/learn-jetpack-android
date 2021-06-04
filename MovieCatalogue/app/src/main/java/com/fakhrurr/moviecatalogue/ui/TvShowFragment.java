@@ -1,19 +1,15 @@
 package com.fakhrurr.moviecatalogue.ui;
 
-import androidx.lifecycle.ViewModelProvider;
-
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.fakhrurr.moviecatalogue.R;
 import com.fakhrurr.moviecatalogue.adapters.MovieAdapter;
 import com.fakhrurr.moviecatalogue.data.MovieEntity;
 import com.fakhrurr.moviecatalogue.databinding.TvShowFragmentBinding;
@@ -50,7 +46,7 @@ public class TvShowFragment extends Fragment {
             tvShowFragmentBinding.rvTvShow.setHasFixedSize(true);
             tvShowFragmentBinding.rvTvShow.setAdapter(adapter);
 
-            if(tvShow.isEmpty()) {
+            if (tvShow.isEmpty()) {
                 tvShowFragmentBinding.emptyData.setVisibility(View.VISIBLE);
             }
         }

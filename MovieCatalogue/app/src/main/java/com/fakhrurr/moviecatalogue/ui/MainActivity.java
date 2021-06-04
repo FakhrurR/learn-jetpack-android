@@ -1,10 +1,9 @@
 package com.fakhrurr.moviecatalogue.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.fakhrurr.moviecatalogue.R;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.fakhrurr.moviecatalogue.adapters.SectionsPagerAdapter;
 import com.fakhrurr.moviecatalogue.databinding.ActivityMainBinding;
 

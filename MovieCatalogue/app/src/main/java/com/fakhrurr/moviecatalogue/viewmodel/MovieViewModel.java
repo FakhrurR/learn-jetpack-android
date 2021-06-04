@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MovieViewModel extends ViewModel {
     // TODO: Implement the ViewModel
-    private DummyData dummyData = new DummyData();
+    private final DummyData dummyData = new DummyData();
 
     public List<MovieEntity> getMovies() {
         return DummyData.generateDummyMovie();
