@@ -18,4 +18,9 @@ public class MovieViewModelTest {
         String movieTitle = "Alita: Battle Angel (2019)";
         assertEquals(movieTitle, movieViewModel.getMovies().get(0).getTitle());
     }
+
+    @Test
+    public void testCheckMovieLength() {
+        assertEquals(10, movieViewModel.getMovies().size());
+    }
 }

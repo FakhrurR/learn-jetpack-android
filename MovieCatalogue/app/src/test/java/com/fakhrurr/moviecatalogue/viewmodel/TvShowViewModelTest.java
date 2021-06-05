@@ -18,4 +18,9 @@ public class TvShowViewModelTest {
         String tvShowTitle = "Gotham (2014)";
         assertEquals(tvShowTitle, tvShowViewModel.getTVShow().get(6).getTitle());
     }
+
+    @Test
+    public void testCheckMovieLength() {
+        assertEquals(10, tvShowViewModel.getTVShow().size());
+    }
 }
