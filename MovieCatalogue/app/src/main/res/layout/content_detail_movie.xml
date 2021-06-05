@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/text_date"
         app:layout_constraintTop_toBottomOf="@+id/text_date"
-        tools:text="@string/dummy_title_name" />
+        android:text="@string/dummy_title_name" />
 
     <TextView
         android:id="@+id/text_date"
@@ -77,9 +77,8 @@
         android:layout_marginTop="8dp"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/label_description"
-        tools:text="@string/dummy_description" />
+        android:text="@string/dummy_description" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
