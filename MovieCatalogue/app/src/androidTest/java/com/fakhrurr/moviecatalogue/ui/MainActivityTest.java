@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.ViewAssertion;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
@@ -24,7 +25,9 @@ import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
+import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class MainActivityTest {
@@ -58,6 +61,52 @@ public class MainActivityTest {
                                 0),
                         isDisplayed()));
         tabViewTV.perform(click());
+    }
+
+    @Test
+    public void testViewTVShowItem() {
+        onView(allOf(withId(R.id.img_item),isDisplayed()));
+        onView(allOf(withId(R.id.img_item), notNullValue()));
+
+        onView(allOf(withId(R.id.title_name),isDisplayed()));
+        onView(allOf(withId(R.id.title_name), notNullValue()));
+
+        onView(allOf(withId(R.id.date_movie),isDisplayed()));
+        onView(allOf(withId(R.id.date_movie),notNullValue()));
+
+        onView(allOf(withId(R.id.genre),isDisplayed()));
+        onView(allOf(withId(R.id.genre),notNullValue()));
+
+        onView(allOf(withId(R.id.description_name),isDisplayed()));
+        onView(allOf(withId(R.id.genre),notNullValue()));
+    }
+
+    @Test
+    public void testViewMoviesItem(){
+        ViewInteraction tabView = onView(
+                allOf(withContentDescription("Movie"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.tabs),
+                                        0),
+                                1),
+                        isDisplayed()));
+        tabView.perform(click());
+
+        onView(allOf(withId(R.id.img_item),isDisplayed()));
+        onView(allOf(withId(R.id.img_item), notNullValue()));
+
+        onView(allOf(withId(R.id.title_name),isDisplayed()));
+        onView(allOf(withId(R.id.title_name), notNullValue()));
+
+        onView(allOf(withId(R.id.date_movie),isDisplayed()));
+        onView(allOf(withId(R.id.date_movie),notNullValue()));
+
+        onView(allOf(withId(R.id.genre),isDisplayed()));
+        onView(allOf(withId(R.id.genre),notNullValue()));
+
+        onView(allOf(withId(R.id.description_name),isDisplayed()));
+        onView(allOf(withId(R.id.genre),notNullValue()));
     }
 
     private static Matcher<View> childAtPosition(

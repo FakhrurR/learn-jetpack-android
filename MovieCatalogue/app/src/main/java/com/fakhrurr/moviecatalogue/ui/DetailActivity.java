@@ -39,6 +39,7 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void movieDetail(MovieEntity movieEntity) {
+        activityDetailBinding.detailContent.imagePoster.setTag(movieEntity.getImagePath());
         Glide.with(this)
                 .load(movieEntity.getImagePath())
                 .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
