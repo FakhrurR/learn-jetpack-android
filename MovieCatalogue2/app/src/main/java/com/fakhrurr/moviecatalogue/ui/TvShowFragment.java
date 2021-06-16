@@ -8,15 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.fakhrurr.moviecatalogue.adapters.TVShowAdapter;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItem;
 import com.fakhrurr.moviecatalogue.databinding.TvShowFragmentBinding;
+import com.fakhrurr.moviecatalogue.viewmodel.TVShowViewModalFactory;
 import com.fakhrurr.moviecatalogue.viewmodel.TvShowViewModel;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class TvShowFragment extends Fragment {
 
@@ -37,9 +40,11 @@ public class TvShowFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(TvShowViewModel.class);
+//        mViewModel = new ViewModelProvider(this).get(TvShowViewModel.class);
+        TVShowViewModalFactory tvShowViewModalFactory = TVShowViewModalFactory.getINSTANCE(getContext());
+        mViewModel = new ViewModelProvider(this, tvShowViewModalFactory).get(TvShowViewModel.class);
         if (getActivity() != null) {
-            mViewModel.getListAiringToday().observe(getActivity(), resultsItems -> {
+            mViewModel.getAiringToday().observe(getActivity(), resultsItems -> {
                 tvShowFragmentBinding.emptyData.setVisibility(View.GONE);
                 ArrayList<ResultsItem> listAiringToday = new ArrayList<>(resultsItems);
                 TVShowAdapter adapter = new TVShowAdapter();
