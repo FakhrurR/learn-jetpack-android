@@ -101,7 +101,7 @@ public class DetailTVResponse implements Parcelable {
 	@SerializedName("status")
 	private String status;
 
-	protected DetailTVResponse(Parcel in) {
+	public DetailTVResponse(Parcel in) {
 		originalLanguage = in.readString();
 		numberOfEpisodes = in.readInt();
 		type = in.readString();
@@ -136,6 +136,10 @@ public class DetailTVResponse implements Parcelable {
 			return new DetailTVResponse[size];
 		}
 	};
+
+	public DetailTVResponse() {
+
+	}
 
 	public void setOriginalLanguage(String originalLanguage){
 		this.originalLanguage = originalLanguage;

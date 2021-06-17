@@ -18,6 +18,8 @@ import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.GenresItem;
 import com.fakhrurr.moviecatalogue.databinding.ActivityDetailTvShowBinding;
 import com.fakhrurr.moviecatalogue.viewmodel.DetailTVShowModel;
+import com.fakhrurr.moviecatalogue.viewmodel.TVShowViewModalFactory;
+import com.fakhrurr.moviecatalogue.viewmodel.TvShowViewModel;
 
 import java.util.ArrayList;
 
@@ -32,7 +34,9 @@ public class DetailTvShowActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityDetailTvShowBinding = ActivityDetailTvShowBinding.inflate(getLayoutInflater());
         setContentView(activityDetailTvShowBinding.getRoot());
-        viewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(DetailTVShowModel.class);
+
+        TVShowViewModalFactory tvShowViewModalFactory = TVShowViewModalFactory.getINSTANCE(this);
+        viewModel = new ViewModelProvider(this, tvShowViewModalFactory).get(DetailTVShowModel.class);
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -41,35 +45,32 @@ public class DetailTvShowActivity extends AppCompatActivity {
         }
 
         int tvId = getIntent().getIntExtra(EXTRA_COURSE, 0);
-        Log.d("TAG", "onCreate: " + tvId) ;
-        if (tvId != 0) {
-            viewModel.setSelectedTvShow(tvId);
-            loadingProgressBar();
-            viewModel.getDetailTVShow().observe(this, this::tvShowDetail);
-        }
+        Log.d("TAG", "onCreate: " + tvId);
+        viewModel.setSelectedTvShow(tvId);
+        loadingProgressBar();
+        tvShowDetail();
     }
 
-    private void tvShowDetail(DetailTVResponse detailTVResponse) {
-        Glide.with(this)
-                .asBitmap()
-                .load(BASE_URL_IMAGE + detailTVResponse.getPosterPath())
-                .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
-                .into(activityDetailTvShowBinding.detailContent.imagePoster);
-        activityDetailTvShowBinding.detailContent.textTitle.setText(detailTVResponse.getName());
-        activityDetailTvShowBinding.detailContent.contentTextDescription.setText(detailTVResponse.getOverview());
-        initRecycleViewGenre(detailTVResponse);
-        activityDetailTvShowBinding.detailContent.textDate.setText(detailTVResponse.getFirstAirDate());
+    private void tvShowDetail() {
+        viewModel.getDetailTVShow().observe(this, detailTVResponse -> {
+            Glide.with(this)
+                    .asBitmap()
+                    .load(BASE_URL_IMAGE + detailTVResponse.getPosterPath())
+                    .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
+                    .into(activityDetailTvShowBinding.detailContent.imagePoster);
+            activityDetailTvShowBinding.detailContent.textTitle.setText(detailTVResponse.getName());
+            activityDetailTvShowBinding.detailContent.contentTextDescription.setText(detailTVResponse.getOverview());
+            initRecycleViewGenre(detailTVResponse);
+            activityDetailTvShowBinding.detailContent.textDate.setText(detailTVResponse.getFirstAirDate());
+        });
     }
 
     private void loadingProgressBar() {
-        viewModel.isLoading().observe(this, new Observer<Boolean>() {
-            @Override
-            public void onChanged(Boolean aBoolean) {
-                if(aBoolean) {
-                    activityDetailTvShowBinding.detailContent.progressBar.setVisibility(View.VISIBLE);
-                } else {
-                    activityDetailTvShowBinding.detailContent.progressBar.setVisibility(View.GONE);
-                }
+        viewModel.isLoading().observe(this, aBoolean -> {
+            if(aBoolean) {
+                activityDetailTvShowBinding.detailContent.progressBar.setVisibility(View.VISIBLE);
+            } else {
+                activityDetailTvShowBinding.detailContent.progressBar.setVisibility(View.GONE);
             }
         });
     }
@@ -82,5 +83,11 @@ public class DetailTvShowActivity extends AppCompatActivity {
         activityDetailTvShowBinding.detailContent.rvGenre.setLayoutManager(linearLayoutManager);
         activityDetailTvShowBinding.detailContent.rvGenre.setHasFixedSize(true);
         activityDetailTvShowBinding.detailContent.rvGenre.setAdapter(genreAdapter);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

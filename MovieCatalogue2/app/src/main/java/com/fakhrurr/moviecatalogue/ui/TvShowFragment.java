@@ -41,30 +41,35 @@ public class TvShowFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        mViewModel = new ViewModelProvider(this).get(TvShowViewModel.class);
-        TVShowViewModalFactory tvShowViewModalFactory = TVShowViewModalFactory.getINSTANCE(getContext());
-        mViewModel = new ViewModelProvider(this, tvShowViewModalFactory).get(TvShowViewModel.class);
-        if (getActivity() != null) {
-            mViewModel.getAiringToday().observe(getActivity(), resultsItems -> {
-                tvShowFragmentBinding.emptyData.setVisibility(View.GONE);
-                ArrayList<ResultsItem> listAiringToday = new ArrayList<>(resultsItems);
-                TVShowAdapter adapter = new TVShowAdapter();
-                adapter.setTVShow(listAiringToday);
-                tvShowFragmentBinding.rvTvShow.setLayoutManager(new LinearLayoutManager(getContext()));
-                tvShowFragmentBinding.rvTvShow.setHasFixedSize(true);
-                tvShowFragmentBinding.rvTvShow.setAdapter(adapter);
+        try {
+            TVShowViewModalFactory tvShowViewModalFactory = TVShowViewModalFactory.getINSTANCE(getContext());
+            mViewModel = new ViewModelProvider(this, tvShowViewModalFactory).get(TvShowViewModel.class);
 
-                if (listAiringToday.isEmpty()) {
-                    tvShowFragmentBinding.emptyData.setVisibility(View.VISIBLE);
-                }
-            });
+            if (getActivity() != null) {
+                mViewModel.getAiringToday().observe(getActivity(), resultsItems -> {
+                    tvShowFragmentBinding.emptyData.setVisibility(View.GONE);
+                    ArrayList<ResultsItem> listAiringToday = new ArrayList<>(resultsItems);
+                    TVShowAdapter adapter = new TVShowAdapter();
+                    adapter.setTVShow(listAiringToday);
+                    tvShowFragmentBinding.rvTvShow.setLayoutManager(new LinearLayoutManager(getContext()));
+                    tvShowFragmentBinding.rvTvShow.setHasFixedSize(true);
+                    tvShowFragmentBinding.rvTvShow.setAdapter(adapter);
 
-            mViewModel.isLoading().observe(getActivity(), aBoolean -> {
-                if (aBoolean) {
-                    tvShowFragmentBinding.progressBar.setVisibility(View.VISIBLE);
-                } else {
-                    tvShowFragmentBinding.progressBar.setVisibility(View.GONE);
-                }
-            });
+                    if (listAiringToday.isEmpty()) {
+                        tvShowFragmentBinding.emptyData.setVisibility(View.VISIBLE);
+                    }
+                });
+
+                mViewModel.isLoading().observe(getActivity(), aBoolean -> {
+                    if (aBoolean) {
+                        tvShowFragmentBinding.progressBar.setVisibility(View.VISIBLE);
+                    } else {
+                        tvShowFragmentBinding.progressBar.setVisibility(View.GONE);
+                    }
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

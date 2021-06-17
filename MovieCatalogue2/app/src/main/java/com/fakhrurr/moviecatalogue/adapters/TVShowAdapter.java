@@ -58,7 +58,7 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.ViewHolder
             binding.dateMovie.setText(resultsItem.getFirstAirDate());
             binding.rate.setText(String.valueOf(resultsItem.getVoteAverage()));
             binding.descriptionName.setText(resultsItem.getOverview());
-            itemView.setOnClickListener(v -> {
+            binding.cardItem.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), DetailTvShowActivity.class);
                 intent.putExtra(DetailTvShowActivity.EXTRA_COURSE, resultsItem.getId());
                 itemView.getContext().startActivity(intent);

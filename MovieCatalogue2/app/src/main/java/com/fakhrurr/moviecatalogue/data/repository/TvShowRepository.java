@@ -1,25 +1,22 @@
 package com.fakhrurr.moviecatalogue.data.repository;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItem;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
+import com.fakhrurr.moviecatalogue.data.callback.DetailTVShowCallback;
 import com.fakhrurr.moviecatalogue.data.repository.datasource.RemoteDataSource;
-import com.fakhrurr.moviecatalogue.data.repository.datasource.TVShowCallback;
+import com.fakhrurr.moviecatalogue.data.callback.TVShowCallback;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class TvShowRepository implements TvShowDataSource {
     private volatile static TvShowRepository INSTANCE = null;
-    private static String TAG = TvShowRepository.class.getSimpleName();
-    private int tvId;
+    private static final String TAG = TvShowRepository.class.getSimpleName();
     private final RemoteDataSource remoteDataSource;
-    private TVShowCallback tvShowCallback;
 
     private final MutableLiveData<Boolean> _isLoading = new MutableLiveData<>();
 
@@ -28,7 +25,7 @@ public class TvShowRepository implements TvShowDataSource {
     }
 
     public static TvShowRepository getINSTANCE(RemoteDataSource remoteDataSource) {
-        if(INSTANCE != null) {
+        if(INSTANCE == null) {
             synchronized (TvShowRepository.class) {
                 INSTANCE = new TvShowRepository(remoteDataSource);
             }
@@ -42,50 +39,49 @@ public class TvShowRepository implements TvShowDataSource {
 
     @Override
     public LiveData<DetailTVResponse> getDetailTVShowResponse(int id) {
-        return null;
-    }
-
-    @Override
-    public LiveData<List<ResultsItem>> getListTVAiringToday() {
-        final MutableLiveData<List<ResultsItem>> listTVShow = new MutableLiveData<>();
         _isLoading.setValue(true);
-        remoteDataSource.getTVAiringToday(new TVShowCallback() {
+        MutableLiveData<DetailTVResponse> detailTVResponseMutableLiveData = new MutableLiveData<>();
+        remoteDataSource.getDetailTVShow(id, new DetailTVShowCallback() {
             @Override
-            public void onResponseSuccess(List<ResultsItem> results) {
+            public void onResponseSuccess(DetailTVResponse detailTVResponse) {
                 _isLoading.setValue(false);
-                List<ResultsItem> resultsItemList = new ArrayList<>();
-                for(ResultsItem resultsItem: results) {
-                    ResultsItem airingItem = new ResultsItem();
-                    airingItem.setId(resultsItem.getId());
-                    airingItem.setName(resultsItem.getName());
-                    airingItem.setFirstAirDate(resultsItem.getFirstAirDate());
-                    airingItem.setOverview(resultsItem.getOverview());
-                    airingItem.setPosterPath(resultsItem.getPosterPath());
-                    airingItem.setVoteAverage(resultsItem.getVoteAverage());
-                    resultsItemList.add(airingItem);
-                }
-
-                listTVShow.postValue(resultsItemList);
+                DetailTVResponse response = new DetailTVResponse();
+                response.setId(detailTVResponse.getId());
+                response.setName(detailTVResponse.getName());
+                response.setPosterPath(detailTVResponse.getPosterPath());
+                response.setGenres(detailTVResponse.getGenres());
+                response.setFirstAirDate(detailTVResponse.getFirstAirDate());
+                response.setOverview(detailTVResponse.getOverview());
+                response.setVoteAverage(detailTVResponse.getVoteAverage());
+                detailTVResponseMutableLiveData.setValue(response);
             }
 
             @Override
             public void onResponseError(String err) {
+                _isLoading.setValue(false);
                 Log.d(TAG, "onResponseError: " + err);
+            }
+        });
+        return detailTVResponseMutableLiveData;
+    }
+
+    @Override
+    public LiveData<List<ResultsItem>> getListTVAiringToday() {
+        _isLoading.setValue(true);
+        MutableLiveData<List<ResultsItem>> resultsItemMutableLiveData = new MutableLiveData<>();
+        remoteDataSource.getTVAiringToday(new TVShowCallback() {
+            @Override
+            public void onResponseSuccess(List<ResultsItem> results) {
+                _isLoading.setValue(false);
+                resultsItemMutableLiveData.setValue(results);
+            }
+
+            @Override
+            public void onResponseError(String err) {
+                Log.d(TAG, "onResponseError: "+ err);
                 _isLoading.setValue(false);
             }
         });
-        return listTVShow;
+        return resultsItemMutableLiveData;
     }
-
-    @Override
-    public void setSelectedTVShow(int id) {
-        this.tvId = id;
-    }
-
-    @Override
-    public boolean isLoading(boolean loading) {
-        return loading;
-    }
-
-
 }

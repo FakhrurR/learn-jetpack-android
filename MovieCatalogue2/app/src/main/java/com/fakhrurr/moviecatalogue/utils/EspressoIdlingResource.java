@@ -1,4 +1,4 @@
-package com.fakhrurr.moviecatalogue;
+package com.fakhrurr.moviecatalogue.utils;
 
 import androidx.test.espresso.IdlingResource;
 import androidx.test.espresso.idling.CountingIdlingResource;
@@ -6,13 +6,13 @@ import androidx.test.espresso.idling.CountingIdlingResource;
 public class EspressoIdlingResource {
     private static final String RESOURCE = "GLOBAL";
     private static final CountingIdlingResource espressoTestIdlingResource = new CountingIdlingResource(RESOURCE);
-    static void increment() {
+    public static void increment() {
         espressoTestIdlingResource.increment();
     }
-    static void decrement() {
+    public static void decrement() {
         espressoTestIdlingResource.decrement();
     }
-    static IdlingResource getEspressoIdlingResource() {
+    public static IdlingResource getEspressoIdlingResource() {
         return espressoTestIdlingResource;
     }
 }

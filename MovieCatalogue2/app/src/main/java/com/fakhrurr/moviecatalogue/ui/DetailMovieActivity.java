@@ -27,7 +27,7 @@ public class DetailMovieActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setDisplayShowHomeEnabled(true);
-            getSupportActionBar().setTitle("Detail");
+            getSupportActionBar().setTitle(R.string.label_detail_movie);
         }
 
         String movieId = getIntent().getStringExtra(EXTRA_COURSE);

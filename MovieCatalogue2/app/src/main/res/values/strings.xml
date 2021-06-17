@@ -19,4 +19,5 @@
     <string name="label_empty">Data Kosong</string>
     <string name="rate_dummy">7.3</string>
     <string name="title_detail_tv_show">Detail TV Show</string>
+    <string name="label_detail_movie">Detail Movie</string>
 </resources>
