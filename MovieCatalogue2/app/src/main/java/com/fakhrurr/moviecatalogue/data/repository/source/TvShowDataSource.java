@@ -1,4 +1,4 @@
-package com.fakhrurr.moviecatalogue.data.repository;
+package com.fakhrurr.moviecatalogue.data.repository.source;
 
 import androidx.lifecycle.LiveData;
 

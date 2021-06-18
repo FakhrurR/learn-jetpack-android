@@ -12,7 +12,7 @@ public class MovieViewModelTest {
 
     @Before
     public void setUp() {
-        movieViewModel = new MovieViewModel();
+        movieViewModel = new MovieViewModel(repository);
     }
 
     @Test

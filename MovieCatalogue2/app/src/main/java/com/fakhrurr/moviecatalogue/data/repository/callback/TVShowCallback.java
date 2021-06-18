@@ -1,4 +1,4 @@
-package com.fakhrurr.moviecatalogue.data.callback;
+package com.fakhrurr.moviecatalogue.data.repository.callback;
 
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItem;
 

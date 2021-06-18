@@ -7,9 +7,10 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItem;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
-import com.fakhrurr.moviecatalogue.data.callback.DetailTVShowCallback;
-import com.fakhrurr.moviecatalogue.data.repository.datasource.RemoteDataSource;
-import com.fakhrurr.moviecatalogue.data.callback.TVShowCallback;
+import com.fakhrurr.moviecatalogue.data.repository.callback.DetailTVShowCallback;
+import com.fakhrurr.moviecatalogue.data.repository.source.RemoteDataSource;
+import com.fakhrurr.moviecatalogue.data.repository.callback.TVShowCallback;
+import com.fakhrurr.moviecatalogue.data.repository.source.TvShowDataSource;
 
 import java.util.List;
 

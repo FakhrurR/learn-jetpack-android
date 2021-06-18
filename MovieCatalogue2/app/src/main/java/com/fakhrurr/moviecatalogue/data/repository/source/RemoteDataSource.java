@@ -1,11 +1,16 @@
-package com.fakhrurr.moviecatalogue.data.repository.datasource;
+package com.fakhrurr.moviecatalogue.data.repository.source;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
 
-import com.fakhrurr.moviecatalogue.data.callback.DetailTVShowCallback;
-import com.fakhrurr.moviecatalogue.data.callback.TVShowCallback;
+import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.NowPlayingResponse;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItem;
+import com.fakhrurr.moviecatalogue.data.repository.callback.DetailMovieCallback;
+import com.fakhrurr.moviecatalogue.data.repository.callback.DetailTVShowCallback;
+import com.fakhrurr.moviecatalogue.data.repository.callback.MovieCallback;
+import com.fakhrurr.moviecatalogue.data.repository.callback.TVShowCallback;
 import com.fakhrurr.moviecatalogue.utils.EspressoIdlingResource;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.TVAiringTodayResponse;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
@@ -75,6 +80,55 @@ public class RemoteDataSource {
             public void onFailure(@NotNull Call<DetailTVResponse> call, @NotNull Throwable t) {
                 EspressoIdlingResource.decrement();
                 detailTVShowCallback.onResponseError(t.getMessage());
+            }
+        });
+    }
+
+    public void getDetailMovie(int id, DetailMovieCallback detailMovieCallback) {
+        EspressoIdlingResource.increment();
+        Call<DetailMovieResponse> detailMovieResponseCall = ApiConfig.getApiService().getDetailMovie(id);
+        detailMovieResponseCall.enqueue(new Callback<DetailMovieResponse>() {
+            @Override
+            public void onResponse(Call<DetailMovieResponse> call, Response<DetailMovieResponse> response) {
+                if(response.isSuccessful()) {
+                    if(response.body() != null) {
+                        DetailMovieResponse detailMovieResponse = response.body();
+                        detailMovieCallback.onResponseSuccess(detailMovieResponse);
+                    }
+                } else {
+                    detailMovieCallback.onResponseError(response.message());
+                }
+                EspressoIdlingResource.decrement();
+            }
+
+            @Override
+            public void onFailure(Call<DetailMovieResponse> call, Throwable t) {
+                detailMovieCallback.onResponseError(t.getMessage());
+                EspressoIdlingResource.decrement();
+            }
+        });
+    }
+
+    public void getNowPlaying(MovieCallback callback) {
+        EspressoIdlingResource.increment();
+        Call<NowPlayingResponse> responseCall = ApiConfig.getApiService().getMovieNowPlaying();
+        responseCall.enqueue(new Callback<NowPlayingResponse>() {
+            @Override
+            public void onResponse(Call<NowPlayingResponse> call, Response<NowPlayingResponse> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        callback.onResponseSuccess(response.body().getResults());
+                    }
+                } else {
+                    callback.onResponseError(response.message());
+                }
+                EspressoIdlingResource.decrement();
+            }
+
+            @Override
+            public void onFailure(Call<NowPlayingResponse> call, Throwable t) {
+                callback.onResponseError(t.getMessage());
+                EspressoIdlingResource.decrement();
             }
         });
     }

@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.fakhrurr.moviecatalogue.adapters.MovieAdapter;
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItem;
 import com.fakhrurr.moviecatalogue.databinding.MovieFragmentBinding;
+import com.fakhrurr.moviecatalogue.viewmodel.MovieModalFactory;
 import com.fakhrurr.moviecatalogue.viewmodel.MovieViewModel;
 
 import java.util.ArrayList;
@@ -39,7 +40,8 @@ public class MovieFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(MovieViewModel.class);
+        MovieModalFactory movieModalFactory = MovieModalFactory.getINSTANCE(getContext());
+        mViewModel = new ViewModelProvider(this, movieModalFactory).get(MovieViewModel.class);
         if (getActivity() != null) {
             mViewModel.getListNowPlaying().observe(getActivity(), resultsItems -> {
                 movieFragmentBinding.emptyData.setVisibility(View.GONE);

@@ -1,9 +1,6 @@
-package com.fakhrurr.moviecatalogue.data.callback;
+package com.fakhrurr.moviecatalogue.data.repository.callback;
 
-import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItem;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
-
-import java.util.List;
 
 public interface DetailTVShowCallback {
     void onResponseSuccess(DetailTVResponse detailTVResponse);

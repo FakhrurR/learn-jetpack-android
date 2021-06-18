@@ -6,10 +6,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.fakhrurr.moviecatalogue.BuildConfig;
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.NowPlayingResponse;
 
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItem;
+import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
 import com.fakhrurr.moviecatalogue.data.services.ApiConfig;
 
 import org.jetbrains.annotations.NotNull;
@@ -26,7 +26,7 @@ public class MovieViewModel extends ViewModel {
 
     private final MutableLiveData<Boolean> _isLoading = new MutableLiveData<>();
 
-    public MovieViewModel() {
+    public MovieViewModel(MovieRepository repository) {
         getNowPlaying();
     }
 

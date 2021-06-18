@@ -69,8 +69,10 @@ public class DetailTvShowActivity extends AppCompatActivity {
         viewModel.isLoading().observe(this, aBoolean -> {
             if(aBoolean) {
                 activityDetailTvShowBinding.detailContent.progressBar.setVisibility(View.VISIBLE);
+                activityDetailTvShowBinding.detailContent.movieBackground.setVisibility(View.GONE);
             } else {
                 activityDetailTvShowBinding.detailContent.progressBar.setVisibility(View.GONE);
+                activityDetailTvShowBinding.detailContent.movieBackground.setVisibility(View.VISIBLE);
             }
         });
     }

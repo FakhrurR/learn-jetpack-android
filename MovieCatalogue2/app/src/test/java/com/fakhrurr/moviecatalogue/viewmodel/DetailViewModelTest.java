@@ -11,7 +11,7 @@ public class DetailViewModelTest {
     private DetailMovieModel detailViewModel;
     @Before
     public void setUp() {
-        detailViewModel = new DetailMovieModel();
+        detailViewModel = new DetailMovieModel(repository);
     }
 
     @Test

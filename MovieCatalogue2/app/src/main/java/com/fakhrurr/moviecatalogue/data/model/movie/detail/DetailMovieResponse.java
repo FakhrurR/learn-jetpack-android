@@ -83,7 +83,7 @@ public class DetailMovieResponse implements Parcelable {
 	@SerializedName("status")
 	private String status;
 
-	protected DetailMovieResponse(Parcel in) {
+	public DetailMovieResponse(Parcel in) {
 		originalLanguage = in.readString();
 		imdbId = in.readString();
 		video = in.readByte() != 0;
@@ -116,6 +116,10 @@ public class DetailMovieResponse implements Parcelable {
 			return new DetailMovieResponse[size];
 		}
 	};
+
+    public DetailMovieResponse() {
+
+    }
 
 	public void setOriginalLanguage(String originalLanguage){
 		this.originalLanguage = originalLanguage;
