@@ -10,8 +10,8 @@ import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
 import java.util.List;
 
 public class DetailMovieModel extends ViewModel {
-    private int movieId;
     private final MovieRepository movieRepository;
+    private int movieId;
 
     public DetailMovieModel(MovieRepository repository) {
         this.movieRepository = repository;
