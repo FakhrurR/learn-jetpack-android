@@ -3,6 +3,7 @@ package com.fakhrurr.moviecatalogue.ui;
 import android.view.View;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.contrib.RecyclerViewActions;
@@ -11,10 +12,12 @@ import com.fakhrurr.moviecatalogue.R;
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.utils.DummyData;
+import com.fakhrurr.moviecatalogue.utils.EspressoIdlingResource;
 import com.google.android.material.tabs.TabLayout;
 
 import org.hamcrest.CoreMatchers;
 import org.hamcrest.Matcher;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,13 +39,17 @@ public class DetailMovieActivityTest {
     @Before
     public void setUp() {
         ActivityScenario.launch(MainActivity.class);
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.getEspressoIdlingResource());
+    }
+
+    @After
+    public void tearDown() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.getEspressoIdlingResource());
     }
 
     @Test
-    public void loadDetailTVShows() throws InterruptedException {
-        Thread.sleep(2000);
+    public void loadDetailTVShows() {
         onView(withId(R.id.rv_tv_show)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        Thread.sleep(2000);
         onView(withId(R.id.text_title)).check(matches(isDisplayed()));
         onView(withId(R.id.text_title)).check(matches(withText(dummyAiringToday.get(0).getName())));
 
@@ -61,13 +68,11 @@ public class DetailMovieActivityTest {
     }
 
     @Test
-    public void loadDetailMovies() throws InterruptedException {
+    public void loadDetailMovies() {
 
         onView(withId(R.id.tabs)).perform(new TabsMatcher(1));
-        Thread.sleep(2000);
 
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        Thread.sleep(2000);
 
         onView(withId(R.id.text_title)).check(matches(isDisplayed()));
         onView(withId(R.id.text_title)).check(matches(withText(dummyNowPlay.get(0).getTitle())));

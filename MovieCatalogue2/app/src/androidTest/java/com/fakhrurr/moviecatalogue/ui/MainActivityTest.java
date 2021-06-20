@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.view.ViewParent;
 
 import androidx.test.core.app.ActivityScenario;
+import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
@@ -14,10 +15,12 @@ import com.fakhrurr.moviecatalogue.R;
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.utils.DummyData;
+import com.fakhrurr.moviecatalogue.utils.EspressoIdlingResource;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -60,7 +63,14 @@ public class MainActivityTest {
     @Before
     public void setUp() {
         ActivityScenario.launch(MainActivity.class);
+        IdlingRegistry.getInstance().register(EspressoIdlingResource.getEspressoIdlingResource());
     }
+
+    @After
+    public void tearDown() {
+        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.getEspressoIdlingResource());
+    }
+
 
     @Test
     public void testValidationViewTab() {
@@ -89,7 +99,7 @@ public class MainActivityTest {
     }
 
     @Test
-    public void loadNowPlaying() throws InterruptedException {
+    public void loadNowPlaying() {
         ViewInteraction tabView = onView(
                 allOf(withContentDescription("Movie"),
                         childAtPosition(
@@ -99,14 +109,12 @@ public class MainActivityTest {
                                 1),
                         isDisplayed()));
         tabView.perform(click());
-        Thread.sleep(2000);
         onView(allOf(withId(R.id.rv_movie), isDisplayed()));
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.scrollToPosition(dummyNowPlay.size()));
     }
 
     @Test
-    public void loadTVAiringToday() throws InterruptedException {
-        Thread.sleep(2000);
+    public void loadTVAiringToday() {
         onView(allOf(withId(R.id.rv_tv_show), isDisplayed()));
         onView(withId(R.id.rv_tv_show)).perform(RecyclerViewActions.scrollToPosition(dummyAiringToday.size()));
     }
