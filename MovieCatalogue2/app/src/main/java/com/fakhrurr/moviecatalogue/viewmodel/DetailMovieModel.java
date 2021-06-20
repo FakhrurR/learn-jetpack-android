@@ -3,11 +3,9 @@ package com.fakhrurr.moviecatalogue.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.fakhrurr.moviecatalogue.data.MovieEntity;
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItem;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
 import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
-import com.fakhrurr.moviecatalogue.utils.DummyData;
 
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class DetailMovieModel extends ViewModel {
         this.movieId = movieId;
     }
 
-    public LiveData<List<ResultsItem>> getNowPlaying() {
+    public LiveData<List<ResultsItemNowPlaying>> getNowPlaying() {
         return movieRepository.getListNowPlaying();
     }
 

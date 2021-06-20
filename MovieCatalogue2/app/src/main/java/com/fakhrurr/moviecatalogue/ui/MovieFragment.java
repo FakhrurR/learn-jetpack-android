@@ -13,13 +13,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.fakhrurr.moviecatalogue.adapters.MovieAdapter;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItem;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
 import com.fakhrurr.moviecatalogue.databinding.MovieFragmentBinding;
+import com.fakhrurr.moviecatalogue.utils.DummyData;
 import com.fakhrurr.moviecatalogue.viewmodel.MovieModalFactory;
 import com.fakhrurr.moviecatalogue.viewmodel.MovieViewModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MovieFragment extends Fragment {
 
@@ -43,9 +43,9 @@ public class MovieFragment extends Fragment {
         MovieModalFactory movieModalFactory = MovieModalFactory.getINSTANCE(getContext());
         mViewModel = new ViewModelProvider(this, movieModalFactory).get(MovieViewModel.class);
         if (getActivity() != null) {
-            mViewModel.getListNowPlaying().observe(getActivity(), resultsItems -> {
+            mViewModel.getNowPlaying().observe(getActivity(), resultsItems -> {
                 movieFragmentBinding.emptyData.setVisibility(View.GONE);
-                ArrayList<ResultsItem> listNowPlaying = new ArrayList<>(resultsItems);
+                ArrayList<ResultsItemNowPlaying> listNowPlaying = new ArrayList<>(resultsItems);
                 MovieAdapter adapter = new MovieAdapter();
                 adapter.setMovies(listNowPlaying);
                 movieFragmentBinding.rvMovie.setLayoutManager(new LinearLayoutManager(getContext()));

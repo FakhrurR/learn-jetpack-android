@@ -1,25 +1,22 @@
 package com.fakhrurr.moviecatalogue.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fakhrurr.moviecatalogue.R;
 import com.fakhrurr.moviecatalogue.adapters.GenreTVShowAdapter;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
-import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.GenresItem;
+import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.GenresItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.databinding.ActivityDetailTvShowBinding;
 import com.fakhrurr.moviecatalogue.viewmodel.DetailTVShowModel;
 import com.fakhrurr.moviecatalogue.viewmodel.TVShowViewModalFactory;
-import com.fakhrurr.moviecatalogue.viewmodel.TvShowViewModel;
 
 import java.util.ArrayList;
 
@@ -79,7 +76,7 @@ public class DetailTvShowActivity extends AppCompatActivity {
 
     private void initRecycleViewGenre(DetailTVResponse detailTVResponse) {
         GenreTVShowAdapter genreAdapter = new GenreTVShowAdapter();
-        ArrayList<GenresItem> genresItems = new ArrayList<>(detailTVResponse.getGenres());
+        ArrayList<GenresItemTVAiringToday> genresItems = new ArrayList<>(detailTVResponse.getGenres());
         genreAdapter.setGenresItemList(genresItems);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         activityDetailTvShowBinding.detailContent.rvGenre.setLayoutManager(linearLayoutManager);

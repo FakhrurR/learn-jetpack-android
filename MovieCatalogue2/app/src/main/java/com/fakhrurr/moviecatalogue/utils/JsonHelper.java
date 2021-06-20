@@ -1,9 +1,12 @@
 package com.fakhrurr.moviecatalogue.utils;
 
-import android.app.Application;
 import android.content.Context;
 
-import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItem;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,34 +38,41 @@ public class JsonHelper {
         }
     }
 
-//    public List<MovieResponse> loadMovies() {
-//        ArrayList<MovieResponse> list = new ArrayList<>();
-//
-//        try {
-//            JSONObject responseObject = new JSONObject(parsingFileToString("movie_response.json"));
-//            JSONArray listArray = responseObject.getJSONArray("movies");
-//            for (int i = 0; i < listArray.length(); i++) {
-//                JSONObject movie = listArray.getJSONObject(i);
-//
-//                String id = movie.getString("id");
-//                String title = movie.getString("title");
-//                String releaseDate = movie.getString("release_date");
-//                String description = movie.getString("overview");
-//                String voteAverage = movie.getString("vote_average");
-//                String originalLanguage = movie.getString("original_language");
-//                String poster = movie.getString("poster_path");
-//
-//                MovieResponse movieResponse = new MovieResponse(id, title, releaseDate, description, voteAverage, originalLanguage, poster, MOVIE_TYPE);
-//                list.add(movieResponse);
-//            }
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//        return list;
-//    }
+    public LiveData<List<ResultsItemNowPlaying>> loadMovies() {
+        MutableLiveData<List<ResultsItemNowPlaying>> list = new MutableLiveData<>();
+        try {
+            JSONObject responseObject = new JSONObject(parsingFileToString("movie_response.json"));
+            JSONArray listArray = responseObject.getJSONArray("movies");
+            List<ResultsItemNowPlaying> resultsItemNowPlayingList = new ArrayList<>();
+            for (int i = 0; i < listArray.length(); i++) {
+                JSONObject movie = listArray.getJSONObject(i);
 
-    public List<ResultsItem> loadAiringToday() {
-        ArrayList<ResultsItem> list = new ArrayList<>();
+                int id = movie.getInt("id");
+                String title = movie.getString("title");
+                String releaseDate = movie.getString("release_date");
+                String description = movie.getString("overview");
+                int voteAverage = movie.getInt("vote_average");
+                String originalLanguage = movie.getString("original_language");
+                String poster = movie.getString("poster_path");
+
+                ResultsItemNowPlaying movieResponse = new ResultsItemNowPlaying();
+                movieResponse.setId(id);
+                movieResponse.setTitle(title);
+                movieResponse.setReleaseDate(releaseDate);
+                movieResponse.setOverview(description);
+                movieResponse.setVoteAverage(voteAverage);
+                movieResponse.setPosterPath(poster);
+                resultsItemNowPlayingList.add(movieResponse);
+            }
+            list.setValue(resultsItemNowPlayingList);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<ResultsItemTVAiringToday> loadAiringToday() {
+        ArrayList<ResultsItemTVAiringToday> list = new ArrayList<>();
 
         try {
             JSONObject responseObject = new JSONObject(Objects.requireNonNull(parsingFileToString("tv_response.json")));
@@ -78,7 +88,7 @@ public class JsonHelper {
                 String originalLanguage = tvShow.getString("original_language");
                 String poster = tvShow.getString("poster_path");
 
-                ResultsItem tvShowResponse = new ResultsItem();
+                ResultsItemTVAiringToday tvShowResponse = new ResultsItemTVAiringToday();
                 tvShowResponse.setId(id);
                 tvShowResponse.setName(title);
                 tvShowResponse.setFirstAirDate(releaseDate);

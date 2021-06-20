@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fakhrurr.moviecatalogue.R;
-import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItem;
+import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.databinding.ItemListMovieBinding;
 import com.fakhrurr.moviecatalogue.ui.DetailTvShowActivity;
 
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import static com.fakhrurr.moviecatalogue.data.services.ApiConfig.BASE_URL_IMAGE;
 
 public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.ViewHolder> {
-    private final ArrayList<ResultsItem> listTvShows = new ArrayList<>();
+    private final ArrayList<ResultsItemTVAiringToday> listTvShows = new ArrayList<>();
 
-    public void setTVShow(ArrayList<ResultsItem> listTvShow) {
+    public void setTVShow(ArrayList<ResultsItemTVAiringToday> listTvShow) {
         if (listTvShow == null) return;
         this.listTvShows.clear();
         this.listTvShows.addAll(listTvShow);
@@ -36,7 +36,7 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TVShowAdapter.ViewHolder holder, int position) {
-        ResultsItem resultsItem = listTvShows.get(position);
+        ResultsItemTVAiringToday resultsItem = listTvShows.get(position);
         holder.bind(resultsItem);
     }
 
@@ -53,7 +53,7 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.ViewHolder
             this.binding = binding;
         }
 
-        public void bind(ResultsItem resultsItem) {
+        public void bind(ResultsItemTVAiringToday resultsItem) {
             binding.titleName.setText(resultsItem.getName());
             binding.dateMovie.setText(resultsItem.getFirstAirDate());
             binding.rate.setText(String.valueOf(resultsItem.getVoteAverage()));

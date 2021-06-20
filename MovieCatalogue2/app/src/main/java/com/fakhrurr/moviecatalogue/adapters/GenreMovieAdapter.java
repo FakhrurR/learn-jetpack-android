@@ -1,21 +1,22 @@
 package com.fakhrurr.moviecatalogue.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.GenresItemTVAiringToday;
+import com.fakhrurr.moviecatalogue.data.model.movie.detail.GenresItemNowPlaying;
 import com.fakhrurr.moviecatalogue.databinding.ItemGenreBinding;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenreTVShowAdapter extends RecyclerView.Adapter<GenreTVShowAdapter.ViewHolder> {
-    private final List<GenresItemTVAiringToday> genresItemList = new ArrayList<>();
+public class GenreMovieAdapter extends RecyclerView.Adapter<GenreMovieAdapter.ViewHolder> {
+    private final ArrayList<GenresItemNowPlaying> genresItemList = new ArrayList<>();
 
-    public void setGenresItemList( List<GenresItemTVAiringToday> genresItemLists) {
+    public void setGenresItemList( ArrayList<GenresItemNowPlaying> genresItemLists) {
         if (genresItemLists == null) return;
         this.genresItemList.clear();
         this.genresItemList.addAll(genresItemLists);
@@ -23,14 +24,14 @@ public class GenreTVShowAdapter extends RecyclerView.Adapter<GenreTVShowAdapter.
 
     @NonNull
     @Override
-    public GenreTVShowAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public GenreMovieAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         ItemGenreBinding itemGenreBinding = ItemGenreBinding.inflate(LayoutInflater.from(parent.getContext()) , parent, false);
-        return new ViewHolder(itemGenreBinding);
+        return new GenreMovieAdapter.ViewHolder(itemGenreBinding);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull GenreTVShowAdapter.ViewHolder holder, int position) {
-        GenresItemTVAiringToday genresItem = genresItemList.get(position);
+    public void onBindViewHolder(@NonNull GenreMovieAdapter.ViewHolder holder, int position) {
+        GenresItemNowPlaying genresItem = genresItemList.get(position);
         holder.bind(genresItem);
     }
 
@@ -46,7 +47,7 @@ public class GenreTVShowAdapter extends RecyclerView.Adapter<GenreTVShowAdapter.
             this.itemGenreBinding = itemGenreBinding;
         }
 
-        public void bind(GenresItemTVAiringToday genresItem) {
+        public void bind(GenresItemNowPlaying genresItem) {
             itemGenreBinding.titleGenre.setText(genresItem.getName());
         }
     }

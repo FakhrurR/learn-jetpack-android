@@ -3,7 +3,7 @@ package com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ResultsItem{
+public class ResultsItemTVAiringToday {
 
 	@SerializedName("first_air_date")
 	private String firstAirDate;

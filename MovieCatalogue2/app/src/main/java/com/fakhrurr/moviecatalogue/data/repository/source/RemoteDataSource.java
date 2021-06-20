@@ -1,30 +1,29 @@
 package com.fakhrurr.moviecatalogue.data.repository.source;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.util.Log;
 
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.NowPlayingResponse;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItem;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
+import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.TVAiringTodayResponse;
+import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
 import com.fakhrurr.moviecatalogue.data.repository.callback.DetailMovieCallback;
 import com.fakhrurr.moviecatalogue.data.repository.callback.DetailTVShowCallback;
 import com.fakhrurr.moviecatalogue.data.repository.callback.MovieCallback;
 import com.fakhrurr.moviecatalogue.data.repository.callback.TVShowCallback;
-import com.fakhrurr.moviecatalogue.utils.EspressoIdlingResource;
-import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.TVAiringTodayResponse;
-import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
 import com.fakhrurr.moviecatalogue.data.services.ApiConfig;
+import com.fakhrurr.moviecatalogue.utils.EspressoIdlingResource;
 
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RemoteDataSource {
-    private Context context;
-    private static String TAG = RemoteDataSource.class.getSimpleName();
     @SuppressLint("StaticFieldLeak")
     private static RemoteDataSource INSTANCE;
 
@@ -35,7 +34,7 @@ public class RemoteDataSource {
         return INSTANCE;
     }
 
-    public void getTVAiringToday(TVShowCallback tvShowCallback) {
+    public void getTVAiringToday(TVShowCallback callback) {
         EspressoIdlingResource.increment();
         Call<TVAiringTodayResponse> tvAiringTodayResponseCall = ApiConfig.getApiService().getTVAiringToday();
         tvAiringTodayResponseCall.enqueue(new Callback<TVAiringTodayResponse>() {
@@ -43,23 +42,24 @@ public class RemoteDataSource {
             public void onResponse(@NotNull Call<TVAiringTodayResponse> call, @NotNull Response<TVAiringTodayResponse> response) {
                 if (response.isSuccessful()) {
                     if(response.body() != null) {
-                        tvShowCallback.onResponseSuccess(response.body().getResults());
+                        List<ResultsItemTVAiringToday> resultsItemNowPlaying = response.body().getResults();
+                        callback.onResponseSuccess(resultsItemNowPlaying);
                     }
                 } else {
-                    Log.d(TAG, "onResponse: " + response.message());
+                    callback.onResponseError(response.message());
                 }
                 EspressoIdlingResource.decrement();
             }
 
             @Override
             public void onFailure(@NotNull Call<TVAiringTodayResponse> call, @NotNull Throwable t) {
-                Log.d(TAG, "onFailure: " + t.getMessage());
+                callback.onResponseError(t.getMessage());
                 EspressoIdlingResource.decrement();
             }
         });
     }
 
-    public void getDetailTVShow(int id, DetailTVShowCallback detailTVShowCallback) {
+    public void getDetailTVShow(int id, DetailTVShowCallback callback) {
         EspressoIdlingResource.increment();
         Call<DetailTVResponse> detailTVResponseCall = ApiConfig.getApiService().getDetailTVShow(id);
         detailTVResponseCall.enqueue(new Callback<DetailTVResponse>() {
@@ -68,10 +68,10 @@ public class RemoteDataSource {
                 if(response.isSuccessful()) {
                     if(response.body() != null) {
                         DetailTVResponse detailTVResponse = response.body();
-                        detailTVShowCallback.onResponseSuccess(detailTVResponse);
+                        callback.onResponseSuccess(detailTVResponse);
                     }
                 } else {
-                    detailTVShowCallback.onResponseError(response.message());
+                    callback.onResponseError(response.message());
                 }
                 EspressoIdlingResource.decrement();
             }
@@ -79,32 +79,32 @@ public class RemoteDataSource {
             @Override
             public void onFailure(@NotNull Call<DetailTVResponse> call, @NotNull Throwable t) {
                 EspressoIdlingResource.decrement();
-                detailTVShowCallback.onResponseError(t.getMessage());
+                callback.onResponseError(t.getMessage());
             }
         });
     }
 
-    public void getDetailMovie(int id, DetailMovieCallback detailMovieCallback) {
+    public void getDetailMovie(int id, DetailMovieCallback callback) {
         EspressoIdlingResource.increment();
         Call<DetailMovieResponse> detailMovieResponseCall = ApiConfig.getApiService().getDetailMovie(id);
         detailMovieResponseCall.enqueue(new Callback<DetailMovieResponse>() {
             @Override
-            public void onResponse(Call<DetailMovieResponse> call, Response<DetailMovieResponse> response) {
+            public void onResponse(@NotNull Call<DetailMovieResponse> call, @NotNull Response<DetailMovieResponse> response) {
                 if(response.isSuccessful()) {
                     if(response.body() != null) {
                         DetailMovieResponse detailMovieResponse = response.body();
-                        detailMovieCallback.onResponseSuccess(detailMovieResponse);
+                        callback.onResponseSuccess(detailMovieResponse);
                     }
                 } else {
-                    detailMovieCallback.onResponseError(response.message());
+                    callback.onResponseError(response.message());
                 }
                 EspressoIdlingResource.decrement();
             }
 
             @Override
-            public void onFailure(Call<DetailMovieResponse> call, Throwable t) {
-                detailMovieCallback.onResponseError(t.getMessage());
+            public void onFailure(@NotNull Call<DetailMovieResponse> call, @NotNull Throwable t) {
                 EspressoIdlingResource.decrement();
+                callback.onResponseError(t.getMessage());
             }
         });
     }
@@ -114,19 +114,18 @@ public class RemoteDataSource {
         Call<NowPlayingResponse> responseCall = ApiConfig.getApiService().getMovieNowPlaying();
         responseCall.enqueue(new Callback<NowPlayingResponse>() {
             @Override
-            public void onResponse(Call<NowPlayingResponse> call, Response<NowPlayingResponse> response) {
+            public void onResponse(@NotNull Call<NowPlayingResponse> call, @NotNull Response<NowPlayingResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        callback.onResponseSuccess(response.body().getResults());
+                        List<ResultsItemNowPlaying> resultsItemNowPlayings = response.body().getResults();
+                        callback.onResponseSuccess(resultsItemNowPlayings);
                     }
-                } else {
-                    callback.onResponseError(response.message());
                 }
                 EspressoIdlingResource.decrement();
             }
 
             @Override
-            public void onFailure(Call<NowPlayingResponse> call, Throwable t) {
+            public void onFailure(@NotNull Call<NowPlayingResponse> call, @NotNull Throwable t) {
                 callback.onResponseError(t.getMessage());
                 EspressoIdlingResource.decrement();
             }

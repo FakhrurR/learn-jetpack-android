@@ -1,417 +1,424 @@
 {
   "page": 1,
-  "total_results": 10000,
-  "total_pages": 500,
   "results": [
     {
-      "original_name": "Arrow",
-      "genre_ids": [
-        80,
-        18,
-        9648,
-        10759
-      ],
-      "name": "Arrow",
-      "popularity": 371.293,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 2704,
-      "first_air_date": "2012-10-10",
-      "backdrop_path": "\/dKxkwAJfGuznW8Hu0mhaDJtna0n.jpg",
-      "original_language": "en",
-      "id": 1412,
-      "vote_average": 5.8,
-      "overview": "Spoiled billionaire playboy Oliver Queen is missing and presumed dead when his yacht is lost at sea. He returns five years later a changed man, determined to clean up the city as a hooded vigilante armed with a bow.",
-      "poster_path": "\/mo0FP1GxOFZT4UDde7RFDz5APXF.jpg"
-    },
-    {
-      "original_name": "Fear the Walking Dead",
-      "genre_ids": [
-        18,
-        27
-      ],
-      "name": "Fear the Walking Dead",
-      "popularity": 320.013,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 1063,
-      "first_air_date": "2015-08-23",
-      "backdrop_path": "\/7r4FieFH6Eh6S55hi8c9LOiFENg.jpg",
-      "original_language": "en",
-      "id": 62286,
-      "vote_average": 6.3,
-      "overview": "What did the world look like as it was transforming into the horrifying apocalypse depicted in \"The Walking Dead\"? This spin-off set in Los Angeles, following new characters as they face the beginning of the end of the world, will answer that question.",
-      "poster_path": "\/lZMb3R3e5vqukPbeDMeyYGf2ZNG.jpg"
-    },
-    {
-      "original_name": "The Flash",
-      "genre_ids": [
-        18,
-        10765
-      ],
-      "name": "The Flash",
-      "popularity": 289.333,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 2914,
-      "first_air_date": "2014-10-07",
-      "backdrop_path": "\/jC1KqsFx8ZyqJyQa2Ohi7xgL7XC.jpg",
-      "original_language": "en",
-      "id": 60735,
-      "vote_average": 6.7,
-      "overview": "After a particle accelerator causes a freak storm, CSI Investigator Barry Allen is struck by lightning and falls into a coma. Months later he awakens with the power of super speed, granting him the ability to move through Central City like an unseen guardian angel. Though initially excited by his newfound powers, Barry is shocked to discover he is not the only \"meta-human\" who was created in the wake of the accelerator explosion -- and not everyone is using their new powers for good. Barry partners with S.T.A.R. Labs and dedicates his life to protect the innocent. For now, only a few close friends and associates know that Barry is literally the fastest man alive, but it won't be long before the world learns what Barry Allen has become...The Flash.",
-      "poster_path": "\/wHa6KOJAoNTFLFtp7wguUJKSnju.jpg"
-    },
-    {
-      "original_name": "Riverdale",
-      "genre_ids": [
-        18,
-        9648
-      ],
-      "name": "Riverdale",
-      "popularity": 220.356,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 669,
-      "first_air_date": "2017-01-26",
-      "backdrop_path": "\/2IUpoKSP64r6rp2vBo0Fdk8a1UU.jpg",
-      "original_language": "en",
-      "id": 69050,
-      "vote_average": 7.2,
-      "overview": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
-      "poster_path": "\/4X7o1ssOEvp4BFLim1AZmPNcYbU.jpg"
-    },
-    {
-      "original_name": "Law & Order: Special Victims Unit",
-      "genre_ids": [
-        80,
-        18
-      ],
-      "name": "Law & Order: Special Victims Unit",
-      "popularity": 205.275,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 701,
-      "first_air_date": "1999-09-20",
-      "backdrop_path": "\/cD9PxbrdWYgL7MUpD9eOYuiSe2P.jpg",
-      "original_language": "en",
-      "id": 2734,
-      "vote_average": 6.5,
-      "overview": "In the criminal justice system, sexually-based offenses are considered especially heinous. In New York City, the dedicated detectives who investigate these vicious felonies are members of an elite squad known as the Special Victims Unit. These are their stories.",
-      "poster_path": "\/6t6r1VGQTTQecN4V0sZeqsmdU9g.jpg"
-    },
-    {
-      "original_name": "Supernatural",
-      "genre_ids": [
-        18,
-        9648,
-        10765
-      ],
-      "name": "Supernatural",
-      "popularity": 237.473,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 1967,
-      "first_air_date": "2005-09-13",
-      "backdrop_path": "\/o9OKe3M06QMLOzTl3l6GStYtnE9.jpg",
-      "original_language": "en",
-      "id": 1622,
-      "vote_average": 7.4,
-      "overview": "When they were boys, Sam and Dean Winchester lost their mother to a mysterious and demonic supernatural force. Subsequently, their father raised them to be soldiers. He taught them about the paranormal evil that lives in the dark corners and on the back roads of America ... and he taught them how to kill it. Now, the Winchester brothers crisscross the country in their '67 Chevy Impala, battling every kind of supernatural threat they encounter along the way. ",
-      "poster_path": "\/KoYWXbnYuS3b0GyQPkbuexlVK9.jpg"
-    },
-    {
-      "original_name": "The Simpsons",
-      "genre_ids": [
-        16,
-        35
-      ],
-      "name": "The Simpsons",
-      "popularity": 198.353,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 2189,
-      "first_air_date": "1989-12-17",
-      "backdrop_path": "\/f5uNbUC76oowt5mt5J9QlqrIYQ6.jpg",
-      "original_language": "en",
-      "id": 456,
-      "vote_average": 7.1,
-      "overview": "Set in Springfield, the average American town, the show focuses on the antics and everyday adventures of the Simpson family; Homer, Marge, Bart, Lisa and Maggie, as well as a virtual cast of thousands. Since the beginning, the series has been a pop culture icon, attracting hundreds of celebrities to guest star. The show has also made name for itself in its fearless satirical take on politics, media and American life in general.",
-      "poster_path": "\/yTZQkSsxUFJZJe67IenRM0AEklc.jpg"
-    },
-    {
-      "original_name": "僕のヒーローアカデミア",
-      "genre_ids": [
-        16,
-        35,
-        10759
-      ],
-      "name": "My Hero Academia",
-      "popularity": 250.436,
-      "origin_country": [
-        "JP"
-      ],
-      "vote_count": 184,
-      "first_air_date": "2016-04-03",
-      "backdrop_path": "\/r1jOpRyqP5pKkvZvaiCXVJ5RYOa.jpg",
-      "original_language": "ja",
-      "id": 65930,
-      "vote_average": 7.9,
-      "overview": "In a world where eighty percent of the population has some kind of super-powered Quirk, Izuku was unlucky enough to be born completely normal. But that won’t stop him from enrolling in a prestigious hero academy. Now, he’ll get his first taste of brutal rivalry from other schools as he braves the cutthroat, no-holds-barred provisional license exam.",
-      "poster_path": "\/47h1ReX6SSqwiTaz3kCC14f0vzt.jpg"
-    },
-    {
-      "original_name": "Batwoman",
-      "genre_ids": [
-        10759,
-        10765
-      ],
-      "name": "Batwoman",
-      "popularity": 192.53,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 71,
-      "first_air_date": "2019-10-06",
-      "backdrop_path": "\/spc5mNkW2daK1ob7Z7jqNkSlKS2.jpg",
-      "original_language": "en",
-      "id": 89247,
-      "vote_average": 6.6,
-      "overview": "Armed with a great passion for social justice and with a great facility to always say what she thinks, Kate Kane is known in the streets of Gotham as Batwoman, a lesbian highly trained to fight crime that resurfaces in the city. However, before becoming a savior, she must fight the demons that prevent her from being the symbol of the hope of a corrupt city.",
-      "poster_path": "\/jnaimWkIVSD9IInmZPyLYarSvvc.jpg"
-    },
-    {
-      "original_name": "Family Guy",
-      "genre_ids": [
-        16,
-        35
-      ],
-      "name": "Family Guy",
-      "popularity": 199.663,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 1677,
-      "first_air_date": "1999-01-31",
-      "backdrop_path": "\/pH38r4TWTqq7Mcs6XAlwgzNUeJe.jpg",
-      "original_language": "en",
-      "id": 1434,
-      "vote_average": 6.5,
-      "overview": "Sick, twisted, politically incorrect and Freakin' Sweet animated series featuring the adventures of the dysfunctional Griffin family. Bumbling Peter and long-suffering Lois have three kids. Stewie (a brilliant but sadistic baby bent on killing his mother and taking over the world), Meg (the oldest, and is the most unpopular girl in town) and Chris (the middle kid, he's not very bright but has a passion for movies). The final member of the family is Brian - a talking dog and much more than a pet, he keeps Stewie in check whilst sipping Martinis and sorting through his own life issues.",
-      "poster_path": "\/gBGUL1UTUNmdRQT8gA1LUV4yg39.jpg"
-    },
-    {
-      "original_name": "The Blacklist",
-      "genre_ids": [
-        80,
-        18,
-        9648
-      ],
-      "name": "The Blacklist",
-      "popularity": 165.135,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 1056,
-      "first_air_date": "2013-09-23",
-      "backdrop_path": "\/fHwiAqIKragaCbNJo9Qs4lrccIN.jpg",
-      "original_language": "en",
-      "id": 46952,
-      "vote_average": 6.9,
-      "overview": "Raymond \"Red\" Reddington, one of the FBI's most wanted fugitives, surrenders in person at FBI Headquarters in Washington, D.C. He claims that he and the FBI have the same interests: bringing down dangerous criminals and terrorists. In the last two decades, he's made a list of criminals and terrorists that matter the most but the FBI cannot find because it does not know they exist. Reddington calls this \"The Blacklist\". Reddington will co-operate, but insists that he will speak only to Elizabeth Keen, a rookie FBI profiler.",
-      "poster_path": "\/bgbQCW4fE9b6wSOSC6Fb4FfVzsW.jpg"
-    },
-    {
-      "original_name": "Doom Patrol",
-      "genre_ids": [
-        10759,
-        10765
-      ],
-      "name": "Doom Patrol",
-      "popularity": 170.442,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 213,
-      "first_air_date": "2019-02-15",
-      "backdrop_path": "\/sAzw6I1G9JUxm86KokIDdQeWtaq.jpg",
-      "original_language": "en",
-      "id": 79501,
-      "vote_average": 6.4,
-      "overview": "The Doom Patrol’s members each suffered horrible accidents that gave them superhuman abilities — but also left them scarred and disfigured. Traumatized and downtrodden, the team found purpose through The Chief, who brought them together to investigate the weirdest phenomena in existence — and to protect Earth from what they find.",
-      "poster_path": "\/nVN7Dt0Xr78gnJepRsRLaLYklbY.jpg"
-    },
-    {
-      "original_name": "Breaking Bad",
-      "genre_ids": [
-        18
-      ],
-      "name": "Breaking Bad",
-      "popularity": 158.092,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 3565,
-      "first_air_date": "2008-01-20",
-      "backdrop_path": "\/hbgPoI0GBrXJfGjYNV2fMQU0xou.jpg",
-      "original_language": "en",
-      "id": 1396,
-      "vote_average": 8.4,
-      "overview": "When Walter White, a New Mexico chemistry teacher, is diagnosed with Stage III cancer and given a prognosis of only two years left to live. He becomes filled with a sense of fearlessness and an unrelenting desire to secure his family's financial future at any cost as he enters the dangerous world of drugs and crime.",
-      "poster_path": "\/1yeVJox3rjo2jBKrrihIMj7uoS9.jpg"
-    },
-    {
-      "original_name": "Grey's Anatomy",
-      "genre_ids": [
-        18
-      ],
-      "name": "Grey's Anatomy",
-      "popularity": 165.934,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 1068,
-      "first_air_date": "2005-03-27",
-      "backdrop_path": "\/edmk8xjGBsYVIf4QtLY9WMaMcXZ.jpg",
-      "original_language": "en",
-      "id": 1416,
-      "vote_average": 6.4,
-      "overview": "Follows the personal and professional lives of a group of doctors at Seattle’s Grey Sloan Memorial Hospital.",
-      "poster_path": "\/jnsvc7gCKocXnrTXF6p03cICTWb.jpg"
-    },
-    {
-      "original_name": "South Park",
-      "genre_ids": [
-        16,
-        35
-      ],
-      "name": "South Park",
-      "popularity": 158.91,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 1164,
-      "first_air_date": "1997-08-13",
-      "backdrop_path": "\/mSDKNVvDfitFE6Fb6fSSl5DQmgS.jpg",
-      "original_language": "en",
-      "id": 2190,
-      "vote_average": 7.8,
-      "overview": "Follows the misadventures of four irreverent grade-schoolers in the quiet, dysfunctional town of South Park, Colorado.",
-      "poster_path": "\/v9zc0cZpy5aPSfAy6Tgb6I1zWgV.jpg"
-    },
-    {
-      "original_name": "Gotham",
-      "genre_ids": [
-        80,
-        18,
-        14
-      ],
-      "name": "Gotham",
-      "popularity": 147.733,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 1185,
-      "first_air_date": "2014-09-22",
-      "backdrop_path": "\/mKBP1OCgCG0jw8DwVYlnYqVILtc.jpg",
-      "original_language": "en",
-      "id": 60708,
-      "vote_average": 6.9,
-      "overview": "Before there was Batman, there was GOTHAM. \n\nEveryone knows the name Commissioner Gordon. He is one of the crime world's greatest foes, a man whose reputation is synonymous with law and order. But what is known of Gordon's story and his rise from rookie detective to Police Commissioner? What did it take to navigate the multiple layers of corruption that secretly ruled Gotham City, the spawning ground of the world's most iconic villains? And what circumstances created them – the larger-than-life personas who would become Catwoman, The Penguin, The Riddler, Two-Face and The Joker? ",
-      "poster_path": "\/4XddcRDtnNjYmLRMYpbrhFxsbuq.jpg"
-    },
-    {
-      "original_name": "Sesame Street",
-      "genre_ids": [
-        16,
-        35,
-        10751
-      ],
-      "name": "Sesame Street",
-      "popularity": 135.767,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 90,
-      "first_air_date": "1969-11-10",
-      "backdrop_path": "\/6HswtHbletDHrR8B84U5KWkXheQ.jpg",
-      "original_language": "en",
-      "id": 502,
-      "vote_average": 7.4,
-      "overview": "On a special inner city street, the inhabitants—human and muppet—teach preschoolers basic educational and social concepts using comedy, cartoons, games, and songs.",
-      "poster_path": "\/rNknh7XQUWvm4j9WeuhUJhT9NP4.jpg"
-    },
-    {
-      "original_name": "ハンターｘハンター",
-      "genre_ids": [
-        16,
-        35,
-        10759
-      ],
-      "name": "Hunter x Hunter",
-      "popularity": 154.811,
-      "origin_country": [
-        "JP"
-      ],
-      "vote_count": 152,
-      "first_air_date": "2011-10-02",
-      "backdrop_path": "\/ye4oayd3csx8psElvvQPdO2fgdD.jpg",
-      "original_language": "ja",
-      "id": 46298,
-      "vote_average": 8.3,
-      "overview": "Twelve-year-old Gon Freecss one day discovers that the father he had always been told was dead was alive and well. His Father, Ging, is a Hunter—a member of society's elite with a license to go anywhere or do almost anything. Gon, determined to follow in his father's footsteps, decides to take the Hunter Examination and eventually find his father to prove himself as a Hunter in his own right. But on the way, he learns that there is more to becoming a Hunter than previously thought, and the challenges that he must face are considered the toughest in the world.",
-      "poster_path": "\/yWBcBIO9OrF3E85C5Arols6QNnG.jpg"
-    },
-    {
-      "original_name": "Rick and Morty",
-      "genre_ids": [
-        16,
-        35,
-        10759,
-        10765
-      ],
-      "name": "Rick and Morty",
-      "popularity": 167.967,
-      "origin_country": [
-        "US"
-      ],
-      "vote_count": 1399,
+      "backdrop_path": "/6LfVuZBiOOCtqch5Ukspjb9y0EB.jpg",
       "first_air_date": "2013-12-02",
-      "backdrop_path": "\/mzzHr6g1yvZ05Mc7hNj3tUdy2bM.jpg",
-      "original_language": "en",
-      "id": 60625,
-      "vote_average": 8.5,
-      "overview": "Rick is a mentally-unbalanced but scientifically-gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
-      "poster_path": "\/qJdfO3ahgAMf2rcmhoqngjBBZW1.jpg"
-    },
-    {
-      "original_name": "NCIS: Los Angeles",
       "genre_ids": [
-        80,
-        18,
-        9648,
+        16,
+        35,
+        10765,
         10759
       ],
-      "name": "NCIS: Los Angeles",
-      "popularity": 154.855,
+      "id": 60625,
+      "name": "Rick and Morty",
       "origin_country": [
         "US"
       ],
-      "vote_count": 387,
-      "first_air_date": "2009-09-22",
-      "backdrop_path": "\/j4ltPl0cHMd16UO80vbxFx1Td1w.jpg",
       "original_language": "en",
-      "id": 17610,
+      "original_name": "Rick and Morty",
+      "overview": "Rick is a mentally-unbalanced but scientifically-gifted old man who has recently reconnected with his family. He spends most of his time involving his young grandson Morty in dangerous, outlandish adventures throughout space and alternate universes. Compounded with Morty's already unstable family life, these events cause Morty much distress at home and school.",
+      "popularity": 418.537,
+      "poster_path": "/8kOWDBK6XlPUzckuHDo3wwVRFwt.jpg",
+      "vote_average": 8.7,
+      "vote_count": 4395
+    },
+    {
+      "backdrop_path": "/4LTWJ7WNiSk5SUWhRkHT279026o.jpg",
+      "first_air_date": "2016-01-21",
+      "genre_ids": [
+        10759,
+        18,
+        10765
+      ],
+      "id": 62643,
+      "name": "DC's Legends of Tomorrow",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "DC's Legends of Tomorrow",
+      "overview": "When heroes alone are not enough ... the world needs legends. Having seen the future, one he will desperately try to prevent from happening, time-traveling rogue Rip Hunter is tasked with assembling a disparate group of both heroes and villains to confront an unstoppable threat — one in which not only is the planet at stake, but all of time itself. Can this ragtag team defeat an immortal threat unlike anything they have ever known?",
+      "popularity": 328.024,
+      "poster_path": "/uzQpQGISbtxc047IOssFo5AiDwU.jpg",
+      "vote_average": 7.2,
+      "vote_count": 1622
+    },
+    {
+      "backdrop_path": "/wjw3wrmkjjApu83Y4SxmQ5gP2mZ.jpg",
+      "first_air_date": "2021-04-11",
+      "genre_ids": [
+        18,
+        16,
+        10759
+      ],
+      "id": 105009,
+      "name": "Tokyo Revengers",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "東京リベンジャーズ",
+      "overview": "Takemichi Hanagaki is a freelancer that’s reached the absolute pits of despair in his life. He finds out that the only girlfriend he ever had, in middle school, Hinata Tachibana, had been killed by the ruthless Tokyo Manji Gang. The day after hearing about her death, he’s standing on the station platform and ends up being pushed over onto the tracks by a herd of people. He closes his eyes thinking he’s about to die, but when he opens his eyes back up, he somehow had gone back in time 12 years. Now that he’s back living the best days of his life, Takemichi decides to get revenge on his life.",
+      "popularity": 269.839,
+      "poster_path": "/qSEKyf0fWhrCEQ3LTwLqe41eSvR.jpg",
+      "vote_average": 8,
+      "vote_count": 14
+    },
+    {
+      "backdrop_path": "/8vNQ3i2Xa3mrCKn6eq2ce5hhegT.jpg",
+      "first_air_date": "2019-10-06",
+      "genre_ids": [
+        10765,
+        10759,
+        9648,
+        80
+      ],
+      "id": 89247,
+      "name": "Batwoman",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Batwoman",
+      "overview": "Kate Kane, armed with a passion for social justice and a flair for speaking her mind, soars onto the streets of Gotham as Batwoman, an out lesbian and highly trained street fighter primed to snuff out the failing city's criminal resurgence. But don't call her a hero yet. In a city desperate for a savior, Kate must overcome her own demons before embracing the call to be Gotham's symbol of hope",
+      "popularity": 252.872,
+      "poster_path": "/xjyEpcuDbB1jy0ehNQMBiO8KOdr.jpg",
+      "vote_average": 7.3,
+      "vote_count": 1094
+    },
+    {
+      "backdrop_path": "/xlKKD1TXJvh0YYlVPqqQ3g3ZUjM.jpg",
+      "first_air_date": "2018-07-01",
+      "genre_ids": [
+        16,
+        10759,
+        10765
+      ],
+      "id": 80020,
+      "name": "Super Dragon Ball Heroes",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "スーパードラゴンボールヒーローズ",
+      "overview": "Trunks returns from the future to train with Goku and Vegeta. However, it disappears without warning. Then the mysterious Fu bursts in, telling them that Trunks has been imprisoned in the Prison Planet, a mysterious complex in an unknown place in the universes. The group seeks the dragon balls to free Trunks, but an endless battle awaits them! Will Goku and the others rescue Trunks and escape the Prison Planet?",
+      "popularity": 210.987,
+      "poster_path": "/jYeTfpxS3IzgqKkYCjmdCKwq8PW.jpg",
+      "vote_average": 7.5,
+      "vote_count": 1988
+    },
+    {
+      "backdrop_path": "/fPEozMHi64rDQUMJFtojBcCvbrm.jpg",
+      "first_air_date": "2021-04-11",
+      "genre_ids": [
+        16,
+        35,
+        10759,
+        10765
+      ],
+      "id": 104711,
+      "name": "Edens Zero",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "エデンズゼロ",
+      "overview": "At Granbell Kingdom, an abandoned amusement park, Shiki has lived his entire life among machines. But one day, Rebecca and her cat companion Happy appear at the park’s front gates. Little do these newcomers know that this is the first human contact Granbell has had in a hundred years!\n\nAs Shiki stumbles his way into making new friends, his former neighbors stir at an opportunity for a robo-rebellion… And when his old homeland becomes too dangerous, Shiki must join Rebecca and Happy on their spaceship and escape into the boundless cosmos.",
+      "popularity": 132.49,
+      "poster_path": "/zwj3sFZksoFsKqYPMmqGB95H3XJ.jpg",
+      "vote_average": 8,
+      "vote_count": 3
+    },
+    {
+      "backdrop_path": "/uxmxWA4mmxeAWG8NNiUpGC7W462.jpg",
+      "first_air_date": "2021-04-11",
+      "genre_ids": [
+        16,
+        35
+      ],
+      "id": 105556,
+      "name": "Don't Toy With Me, Miss Nagatoro",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "イジらないで、長瀞さん",
+      "overview": "\"A girl in a lower grade just made me cry!\" One day, Senpai visits the library after school and becomes the target of a super sadistic junior! The name of the girl who teases, torments, and tantalizes Senpai is \"Nagatoro!\" She's annoying yet adorable. It's painful, but you still want to be by her side. This is a story about an extremely sadistic and temperamental girl and you'll feel something awaken inside of you.",
+      "popularity": 122.97,
+      "poster_path": "/dHSRVAi83iapl4yazkPiyv3atQZ.jpg",
+      "vote_average": 7.4,
+      "vote_count": 9
+    },
+    {
+      "backdrop_path": "/q79U95wgkocoECitZPfRDhZXBNz.jpg",
+      "first_air_date": "2007-10-14",
+      "genre_ids": [
+        10764
+      ],
+      "id": 14814,
+      "name": "Keeping Up with the Kardashians",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Keeping Up with the Kardashians",
+      "overview": "A peek inside the exploits and privileged private lives of the blended Kardashian-Jenner family, including sisters Kim, Kourtney and Khloé.",
+      "popularity": 105.977,
+      "poster_path": "/nddXOC8wYpIDv7giLzjjqIg8WDA.jpg",
+      "vote_average": 5.2,
+      "vote_count": 260
+    },
+    {
+      "backdrop_path": "/3ILMlmC30QUnYkY3XEBOyJ82Dqu.jpg",
+      "first_air_date": "2016-04-03",
+      "genre_ids": [
+        10765,
+        10759,
+        35,
+        16
+      ],
+      "id": 65930,
+      "name": "My Hero Academia",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "僕のヒーローアカデミア",
+      "overview": "In a world where eighty percent of the population has some kind of super-powered Quirk, Izuku was unlucky enough to be born completely normal. But that won't stop him from enrolling in a prestigious hero academy. Now, he'll get his first taste of brutal rivalry from other schools as he braves the cutthroat, no-holds-barred provisional license exam.",
+      "popularity": 102.613,
+      "poster_path": "/phuYuzqWW9ru8EA3HVjE9W2Rr3M.jpg",
+      "vote_average": 8.9,
+      "vote_count": 2974
+    },
+    {
+      "backdrop_path": "/lEWtzTBC6Ks5fdc4RgHRUZxts2w.jpg",
+      "first_air_date": "2013-04-23",
+      "genre_ids": [
+        35,
+        10759,
+        16,
+        10762
+      ],
+      "id": 45140,
+      "name": "Teen Titans Go!",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Teen Titans Go!",
+      "overview": "Robin, Starfire, Raven, Beast Boy and Cyborg return in all-new, comedic adventures. They may be super heroes who save the world every day ... but somebody still has to do the laundry!",
+      "popularity": 90.371,
+      "poster_path": "/udaLIJ6Na7GOHjvTlyP9JFPTccv.jpg",
+      "vote_average": 6.7,
+      "vote_count": 328
+    },
+    {
+      "backdrop_path": "/en2X3XWGiUwZFe9pH9r06Si3Nbh.jpg",
+      "first_air_date": "2020-10-11",
+      "genre_ids": [
+        16,
+        9648
+      ],
+      "id": 100281,
+      "name": "Moriarty the Patriot",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "憂国のモリアーティ",
+      "overview": "In the late 19th century, the British Empire nobility reigns while its working class suffers at their hands. Sympathetic to their plight, William James Moriarty wants to topple it all. Frustrated by the systemic inequity, Moriarty strategizes to fix the entire nation. Not even consulting detective Sherlock Holmes can stand in his way. It’s time for crime to revolutionize the world!",
+      "popularity": 88.417,
+      "poster_path": "/lLcmshfrLg7JUMwMCnp5fuNqtoQ.jpg",
       "vote_average": 6.8,
-      "overview": "The exploits of the Los Angeles–based Office of Special Projects (OSP), an elite division of the Naval Criminal Investigative Service that specializes in undercover assignments.",
-      "poster_path": "\/p0doUtM8RhXcAwHs6VmMZMQKpai.jpg"
+      "vote_count": 8
+    },
+    {
+      "backdrop_path": "/jWXrQstj7p3Wl5MfYWY6IHqRpDb.jpg",
+      "first_air_date": "1952-12-26",
+      "genre_ids": [
+        10763
+      ],
+      "id": 94722,
+      "name": "Tagesschau",
+      "origin_country": [
+        "DE"
+      ],
+      "original_language": "de",
+      "original_name": "Tagesschau",
+      "overview": "German daily news program, the oldest still existing program on German television.",
+      "popularity": 87.467,
+      "poster_path": "/7dFZJ2ZJJdcmkp05B9NWlqTJ5tq.jpg",
+      "vote_average": 6.6,
+      "vote_count": 7
+    },
+    {
+      "backdrop_path": "/rHuXgDmrv4vMKgQZ6pu2E2iLJnM.jpg",
+      "first_air_date": "2010-07-11",
+      "genre_ids": [
+        35,
+        10764
+      ],
+      "id": 33238,
+      "name": "Running Man",
+      "origin_country": [
+        "KR"
+      ],
+      "original_language": "ko",
+      "original_name": "런닝맨",
+      "overview": "These days, variety entertainment is gradually disappearing. It is one of Korea's representative variety entertainment shows that has been in charge of Sunday evenings for over 10 years. In this program, many stars and members play games and missions together. It is characterized by going around several places. In particular, this program focuses solely on laughter among the many fun elements of entertainment.\n\nOpen your eyes! Big fun enters!\n\nOpen your mouth!  A big smile enters!\n\nOpen your mind! Instructive lesson enters!",
+      "popularity": 85.454,
+      "poster_path": "/2Wmmu1MkqxJ48J7aySET9EKEjXz.jpg",
+      "vote_average": 8.4,
+      "vote_count": 106
+    },
+    {
+      "backdrop_path": "/knIHqqoNsDZn2tZrDM3iw3xH9oe.jpg",
+      "first_air_date": "2021-04-04",
+      "genre_ids": [
+        16,
+        35,
+        10759,
+        10765
+      ],
+      "id": 100567,
+      "name": "Combatants Will Be Dispatched!",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "戦闘員、派遣します！",
+      "overview": "Turns out, evil takes initiative! With world domination close at hand, the Kisaragi Corporation turns its sights on interstellar conquest, and who better to take over a magical world than two randomly assigned minions—Combatant Agent Six and his android partner Alice? But Six’s path up the evil corporate ladder won’t be easy—a Demon Lord’s army is hatching its own nefarious plan!",
+      "popularity": 83.505,
+      "poster_path": "/tk0LqlgKzc79nWtTmgGz41yu6p3.jpg",
+      "vote_average": 7.8,
+      "vote_count": 4
+    },
+    {
+      "backdrop_path": "/hAX7Rz0vJOwGtGoAIcf9HZsXmcP.jpg",
+      "first_air_date": "2008-01-28",
+      "genre_ids": [
+        18
+      ],
+      "id": 14069,
+      "name": "In Treatment",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "In Treatment",
+      "overview": "Set within the highly charged confines of individual psychotherapy sessions and centering around Dr. Paul Weston, a psychotherapist who exhibits an insightful, reserved demeanor while treating his patients—but displays a crippling insecurity while counseled by his own therapist.",
+      "popularity": 80.992,
+      "poster_path": "/h154oebDAD9sCTlRjvl4Yp9ws9j.jpg",
+      "vote_average": 8.1,
+      "vote_count": 95
+    },
+    {
+      "backdrop_path": null,
+      "first_air_date": "1971-04-03",
+      "genre_ids": [
+        10759,
+        10765,
+        10762
+      ],
+      "id": 2661,
+      "name": "Kamen Rider",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "仮面ライダ",
+      "overview": "A Japanese anthology series centered around a man who transforms into a bug-themed superhero.",
+      "popularity": 80.345,
+      "poster_path": "/o57T19zgZakEpre3d9ddy1UZonp.jpg",
+      "vote_average": 5.4,
+      "vote_count": 53
+    },
+    {
+      "backdrop_path": "/8nzvbgGM1bDqK3fscy86LyOnDcf.jpg",
+      "first_air_date": "1996-01-08",
+      "genre_ids": [
+        16,
+        35,
+        9648
+      ],
+      "id": 30983,
+      "name": "Case Closed",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "名探偵コナン",
+      "overview": "The son of a world famous mystery writer, Jimmy Kudo, has achieved his own notoriety by assisting the local police as a student detective. He has always been able to solve the most difficult of criminal cases using his wits and power of reason.",
+      "popularity": 76.833,
+      "poster_path": "/9ve6LW4ltMMpp9WjoR4MGViOp9V.jpg",
+      "vote_average": 7.8,
+      "vote_count": 447
+    },
+    {
+      "backdrop_path": "/odItfoVoACL99EmWmqmWxBCrpXg.jpg",
+      "first_air_date": "2015-12-05",
+      "genre_ids": [
+        10764,
+        35
+      ],
+      "id": 70672,
+      "name": "Men on a Mission",
+      "origin_country": [
+        "KR"
+      ],
+      "original_language": "ko",
+      "original_name": "아는 형님",
+      "overview": "Male celebs play make-believe as high schoolers, welcoming star transfer students every week and engaging in battles of witty humor and slapstick.",
+      "popularity": 75.575,
+      "poster_path": "/a1rnHdqAvEm5NUWJ2SRzBY4Hkt5.jpg",
+      "vote_average": 8,
+      "vote_count": 18
+    },
+    {
+      "backdrop_path": "/lSlL2CAPSDJ9gf2MZX0x2u2inKX.jpg",
+      "first_air_date": "2021-04-11",
+      "genre_ids": [
+        16,
+        18,
+        10759,
+        10765
+      ],
+      "id": 100565,
+      "name": "86: Eighty Six",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "８６―エイティシックス―",
+      "overview": "Called “Juggernaut,” these are the unmanned combat drones developed by the Republic of San Magnolia in answer to the attacks by the autonomous unmanned drones of the neighboring Empire of Giad, the “Legion”. But they’re only unmanned in name. In reality, they are piloted by the Eighty-sixers—those considered to be less than human and treated as mere tools. Determined to achieve his own mysterious ends, Shin, the captain of Spearhead Squadron, which is comprised of Eighty-sixers, continues to fight a hopeless war on a battlefield where only death awaits him.",
+      "popularity": 75.461,
+      "poster_path": "/96mUvRlJBYOMBdbn30wtoh7QrpY.jpg",
+      "vote_average": 7.7,
+      "vote_count": 7
+    },
+    {
+      "backdrop_path": "/fOlKY2rpDnoxcWU6a0Z4dpRA61d.jpg",
+      "first_air_date": "2021-04-03",
+      "genre_ids": [
+        16,
+        18,
+        10765
+      ],
+      "id": 116725,
+      "name": "Vivy -Fluorite Eye's Song-",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "Vivy -Fluorite Eye's Song-",
+      "overview": "In the near future, Vivy, a diva-type A.I., went up on stage each day with hopes of putting her heart into her song. One day, the A.I. Matsumoto, who claims to have arrived from 100 years in the future, appears before Vivy with an important request...",
+      "popularity": 73.418,
+      "poster_path": "/xRakd62ihUP19NBgWyJzjO26NxE.jpg",
+      "vote_average": 8.8,
+      "vote_count": 5
     }
-  ]
+  ],
+  "total_pages": 11,
+  "total_results": 215
 }

@@ -15,7 +15,7 @@ public class NowPlayingResponse {
 	private int totalPages;
 
 	@SerializedName("results")
-	private List<ResultsItem> results;
+	private List<ResultsItemNowPlaying> results;
 
 	@SerializedName("total_results")
 	private int totalResults;
@@ -44,11 +44,11 @@ public class NowPlayingResponse {
 		return totalPages;
 	}
 
-	public void setResults(List<ResultsItem> results){
+	public void setResults(List<ResultsItemNowPlaying> results){
 		this.results = results;
 	}
 
-	public List<ResultsItem> getResults(){
+	public List<ResultsItemNowPlaying> getResults(){
 		return results;
 	}
 

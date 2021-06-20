@@ -1,34 +1,66 @@
 package com.fakhrurr.moviecatalogue.viewmodel;
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+
 import com.fakhrurr.moviecatalogue.R;
+import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
+import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
+import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
+import com.fakhrurr.moviecatalogue.utils.DummyData;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class DetailViewModelTest {
     private DetailMovieModel detailViewModel;
+
+    private final DetailMovieResponse dummyNowPlaying = DummyData.generateDummyDetailNowPlaying();
+    private final int movieId = dummyNowPlaying.getId();
+
+    @Rule
+    public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
+
+    @Mock
+    private MovieRepository repository;
+
+    @Mock
+    private Observer<DetailMovieResponse> observer;
+
     @Before
     public void setUp() {
+        MockitoAnnotations.initMocks(this);
         detailViewModel = new DetailMovieModel(repository);
+        detailViewModel.setSelectedMovie(movieId);
     }
 
     @Test
     public void getMovieDetail() {
-        String dummyMovieId = "1";
-        String dummyMovieTitle = "Alita: Battle Angel (2019)";
-        String dummyDes = "Ketika Alita terbangun tanpa ingatan tentang siapa dia di dunia masa depan yang tidak dia kenal, dia ditangkap oleh Ido, seorang dokter yang penuh kasih yang menyadari bahwa di suatu tempat dalam cangkang cyborg yang ditinggalkan ini adalah hati dan jiwa seorang wanita muda dengan luar biasa. lalu.";
-        String dummyDate = "14/02/2019 (US)";
-        String dummyGenre = "Aksi, Cerita Fiksi, Petualangan";
-        int dummyImagePath = R.drawable.poster_alita;
+        DetailMovieResponse dummyNowPlayingMovie = DummyData.generateDummyDetailNowPlaying();
+        MutableLiveData<DetailMovieResponse> detailMovieResponseMutableLiveData = new MutableLiveData<>();
+        detailMovieResponseMutableLiveData.setValue(dummyNowPlayingMovie);
 
-        detailViewModel.setSelectedMovie("1");
-        assertEquals(dummyMovieId, detailViewModel.getMovie().getMovieId());
-        assertEquals(dummyMovieTitle, detailViewModel.getMovie().getTitle());
-        assertEquals(dummyDes, detailViewModel.getMovie().getDescription());
-        assertEquals(dummyGenre, detailViewModel.getMovie().getGenre());
-        assertEquals(dummyDate, detailViewModel.getMovie().getDate());
-        assertEquals(dummyImagePath, detailViewModel.getMovie().getImagePath());
+        when(repository.getDetailMovieResponse(movieId)).thenReturn(detailMovieResponseMutableLiveData);
+        DetailMovieResponse detailMovieResponse = detailViewModel.getDetailMovie().getValue();
+        verify(repository).getDetailMovieResponse(movieId);
+        assertNotNull(detailMovieResponse);
+
+        assertEquals(detailMovieResponse.getTitle(), dummyNowPlayingMovie.getTitle());
+        assertEquals(detailMovieResponse.getId(), dummyNowPlayingMovie.getId());
+        assertEquals(detailMovieResponse.getOverview(), dummyNowPlayingMovie.getOverview());
+        assertEquals(detailMovieResponse.getPosterPath(), dummyNowPlayingMovie.getPosterPath());
+        assertEquals(detailMovieResponse.getVoteAverage(), dummyNowPlayingMovie.getVoteAverage(), 0);
+
+        detailViewModel.getDetailMovie().observeForever(observer);
+        verify(observer).onChanged(dummyNowPlayingMovie);
     }
 }

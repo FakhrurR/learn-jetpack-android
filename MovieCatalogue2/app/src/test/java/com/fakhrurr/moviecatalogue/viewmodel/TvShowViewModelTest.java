@@ -1,39 +1,61 @@
 package com.fakhrurr.moviecatalogue.viewmodel;
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+
 import com.fakhrurr.moviecatalogue.R;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
+import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
+import com.fakhrurr.moviecatalogue.data.repository.TvShowRepository;
+import com.fakhrurr.moviecatalogue.utils.DummyData;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class TvShowViewModelTest {
     private TvShowViewModel tvShowViewModel;
 
+    @Rule
+    public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
+
+    @Mock
+    private TvShowRepository repository;
+
+    @Mock
+    private Observer<List<ResultsItemTVAiringToday>> observer;
+
     @Before
     public void setUp() {
-        tvShowViewModel = new TvShowViewModel();
+        MockitoAnnotations.initMocks(this);
+        tvShowViewModel = new TvShowViewModel(repository);
     }
 
     @Test
-    public void getTVShow() {
-        String dummyTvShowId = "17";
-        String dummyTvShowTitle = "Gotham (2014)";
-        String dummyDes = "Semua orang tahu nama Komisaris Gordon. Dia adalah salah satu musuh terbesar dunia kejahatan, seorang pria yang reputasinya identik dengan hukum dan ketertiban. Tapi apa yang diketahui tentang kisah Gordon dan kenaikannya dari detektif pemula ke Komisaris Polisi? Apa yang diperlukan untuk menavigasi berbagai lapisan korupsi yang diam-diam memerintah Kota Gotham, tempat bertelurnya penjahat paling ikonik di dunia? Dan keadaan apa yang menciptakan mereka - persona yang lebih besar dari kehidupan yang akan menjadi Catwoman, The Penguin, The Riddler, Two-Face dan The Joker?";
-        String dummyDate = "September 22, 2014";
-        String dummyGenre = "Drama, Kejahatan, Sci-fi & Fantasy";
-        int dummyImagePath = R.drawable.poster_gotham;
+    public void getTVAiringToday() {
+        List<ResultsItemTVAiringToday> dummyAiringToday = DummyData.generateDummyTVAiringToday();
+        MutableLiveData<List<ResultsItemTVAiringToday>> resultsItemTVAiringTodays = new MutableLiveData<>();
+        resultsItemTVAiringTodays.setValue(dummyAiringToday);
 
-        assertEquals(dummyTvShowId, tvShowViewModel.getTVShow().get(6).getMovieId());
-        assertEquals(dummyTvShowTitle, tvShowViewModel.getTVShow().get(6).getTitle());
-        assertEquals(dummyDes, tvShowViewModel.getTVShow().get(6).getDescription());
-        assertEquals(dummyDate, tvShowViewModel.getTVShow().get(6).getDate());
-        assertEquals(dummyGenre, tvShowViewModel.getTVShow().get(6).getGenre());
-        assertEquals(dummyImagePath, tvShowViewModel.getTVShow().get(6).getImagePath());
-    }
+        when(repository.getListTVAiringToday()).thenReturn(resultsItemTVAiringTodays);
+        List<ResultsItemTVAiringToday> resultsItemTVAiringToday = tvShowViewModel.getAiringToday().getValue();
+        verify(repository).getListTVAiringToday();
+        assertNotNull(resultsItemTVAiringToday);
+        assertEquals(20, resultsItemTVAiringToday.size());
 
-    @Test
-    public void testCheckTVShowLength() {
-        assertEquals(10, tvShowViewModel.getTVShow().size());
+        tvShowViewModel.getAiringToday().observeForever(observer);
+        verify(observer).onChanged(dummyAiringToday);
     }
 }

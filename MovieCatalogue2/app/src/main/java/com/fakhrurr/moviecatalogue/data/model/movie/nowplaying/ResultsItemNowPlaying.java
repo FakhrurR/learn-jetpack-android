@@ -3,7 +3,7 @@ package com.fakhrurr.moviecatalogue.data.model.movie.nowplaying;
 import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class ResultsItem {
+public class ResultsItemNowPlaying {
 
 	@SerializedName("overview")
 	private String overview;

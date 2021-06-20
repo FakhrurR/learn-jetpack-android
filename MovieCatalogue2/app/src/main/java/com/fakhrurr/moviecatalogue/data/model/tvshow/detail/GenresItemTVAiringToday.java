@@ -2,7 +2,7 @@ package com.fakhrurr.moviecatalogue.data.model.tvshow.detail;
 
 import com.google.gson.annotations.SerializedName;
 
-public class GenresItem{
+public class GenresItemTVAiringToday {
 
 	@SerializedName("name")
 	private String name;

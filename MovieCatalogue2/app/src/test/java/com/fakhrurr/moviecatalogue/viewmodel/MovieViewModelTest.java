@@ -1,39 +1,62 @@
 package com.fakhrurr.moviecatalogue.viewmodel;
 
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+
 import com.fakhrurr.moviecatalogue.R;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
+import com.fakhrurr.moviecatalogue.data.repository.TvShowRepository;
+import com.fakhrurr.moviecatalogue.utils.DummyData;
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class MovieViewModelTest {
+    @Rule
+    public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
+
     private MovieViewModel movieViewModel;
+
+    @Mock
+    private MovieRepository repository;
+
+    @Mock
+    private Observer<List<ResultsItemNowPlaying>> observer;
 
     @Before
     public void setUp() {
+        MockitoAnnotations.initMocks(this);
         movieViewModel = new MovieViewModel(repository);
     }
 
     @Test
-    public void getMovies() {
-        String dummyMovieId = "1";
-        String dummyMovieTitle = "Alita: Battle Angel (2019)";
-        String dummyDes = "Ketika Alita terbangun tanpa ingatan tentang siapa dia di dunia masa depan yang tidak dia kenal, dia ditangkap oleh Ido, seorang dokter yang penuh kasih yang menyadari bahwa di suatu tempat dalam cangkang cyborg yang ditinggalkan ini adalah hati dan jiwa seorang wanita muda dengan luar biasa. lalu.";
-        String dummyDate = "14/02/2019 (US)";
-        String dummyGenre = "Aksi, Cerita Fiksi, Petualangan";
-        int dummyImagePath = R.drawable.poster_alita;
+    public void getNowPlaying() {
+        List<ResultsItemNowPlaying> dummyNowPlay = DummyData.generateDummyNowPlaying();
+        MutableLiveData<List<ResultsItemNowPlaying>> resultsItemNowPlayingMutableLiveData = new MutableLiveData<>();
+        resultsItemNowPlayingMutableLiveData.setValue(dummyNowPlay);
 
-        assertEquals(dummyMovieId, movieViewModel.getMovies().get(0).getMovieId());
-        assertEquals(dummyMovieTitle, movieViewModel.getMovies().get(0).getTitle());
-        assertEquals(dummyDes, movieViewModel.getMovies().get(0).getDescription());
-        assertEquals(dummyGenre, movieViewModel.getMovies().get(0).getGenre());
-        assertEquals(dummyDate, movieViewModel.getMovies().get(0).getDate());
-        assertEquals(dummyImagePath, movieViewModel.getMovies().get(0).getImagePath());
-    }
+        when(repository.getListNowPlaying()).thenReturn(resultsItemNowPlayingMutableLiveData);
+        List<ResultsItemNowPlaying> resultsItemNowPlayingList = movieViewModel.getNowPlaying().getValue();
+        verify(repository).getListNowPlaying();
+        assertNotNull(resultsItemNowPlayingList);
+        assertEquals(20, resultsItemNowPlayingList.size());
 
-    @Test
-    public void testCheckMovieLength() {
-        assertEquals(10, movieViewModel.getMovies().size());
+        movieViewModel.getNowPlaying().observeForever(observer);
+        verify(observer).onChanged(dummyNowPlay);
     }
 }

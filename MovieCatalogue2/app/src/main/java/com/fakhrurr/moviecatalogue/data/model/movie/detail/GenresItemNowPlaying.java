@@ -2,7 +2,7 @@ package com.fakhrurr.moviecatalogue.data.model.movie.detail;
 
 import com.google.gson.annotations.SerializedName;
 
-public class GenresItem{
+public class GenresItemNowPlaying {
 
 	@SerializedName("name")
 	private String name;

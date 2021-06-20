@@ -24,7 +24,7 @@ public class DetailTVResponse implements Parcelable {
 	private String backdropPath;
 
 	@SerializedName("genres")
-	private List<GenresItem> genres;
+	private List<GenresItemTVAiringToday> genres;
 
 	@SerializedName("popularity")
 	private double popularity;
@@ -181,11 +181,11 @@ public class DetailTVResponse implements Parcelable {
 		return backdropPath;
 	}
 
-	public void setGenres(List<GenresItem> genres){
+	public void setGenres(List<GenresItemTVAiringToday> genres){
 		this.genres = genres;
 	}
 
-	public List<GenresItem> getGenres(){
+	public List<GenresItemTVAiringToday> getGenres(){
 		return genres;
 	}
 

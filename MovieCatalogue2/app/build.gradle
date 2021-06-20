@@ -32,6 +32,10 @@ android {
     buildFeatures {
         viewBinding true
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -61,4 +65,7 @@ dependencies {
     testImplementation "org.mockito:mockito-core:$mockitoVersion"
     androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
     implementation 'androidx.test.espresso:espresso-idling-resource:3.3.0'
+    testImplementation 'org.json:json:20180813'
+    testImplementation "androidx.arch.core:core-testing:$androidCoreTestVersion"
+    implementation "androidx.test.espresso:espresso-idling-resource:$idleResourceVersion"
 }

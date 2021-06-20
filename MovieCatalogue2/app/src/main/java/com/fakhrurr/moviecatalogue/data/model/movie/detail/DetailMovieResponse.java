@@ -27,7 +27,7 @@ public class DetailMovieResponse implements Parcelable {
 	private int revenue;
 
 	@SerializedName("genres")
-	private List<GenresItem> genres;
+	private List<GenresItemNowPlaying> genres;
 
 	@SerializedName("popularity")
 	private double popularity;
@@ -169,11 +169,11 @@ public class DetailMovieResponse implements Parcelable {
 		return revenue;
 	}
 
-	public void setGenres(List<GenresItem> genres){
+	public void setGenres(List<GenresItemNowPlaying> genres){
 		this.genres = genres;
 	}
 
-	public List<GenresItem> getGenres(){
+	public List<GenresItemNowPlaying> getGenres(){
 		return genres;
 	}
 

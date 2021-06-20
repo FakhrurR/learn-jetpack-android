@@ -12,7 +12,7 @@ public class TVAiringTodayResponse{
 	private int totalPages;
 
 	@SerializedName("results")
-	private List<ResultsItem> results;
+	private List<ResultsItemTVAiringToday> results;
 
 	@SerializedName("total_results")
 	private int totalResults;
@@ -33,11 +33,11 @@ public class TVAiringTodayResponse{
 		return totalPages;
 	}
 
-	public void setResults(List<ResultsItem> results){
+	public void setResults(List<ResultsItemTVAiringToday> results){
 		this.results = results;
 	}
 
-	public List<ResultsItem> getResults(){
+	public List<ResultsItemTVAiringToday> getResults(){
 		return results;
 	}
 

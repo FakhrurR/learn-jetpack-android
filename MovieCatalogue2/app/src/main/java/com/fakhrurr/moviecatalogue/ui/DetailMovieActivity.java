@@ -1,20 +1,25 @@
 package com.fakhrurr.moviecatalogue.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fakhrurr.moviecatalogue.R;
-import com.fakhrurr.moviecatalogue.data.MovieEntity;
+import com.fakhrurr.moviecatalogue.adapters.GenreMovieAdapter;
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
+import com.fakhrurr.moviecatalogue.data.model.movie.detail.GenresItemNowPlaying;
 import com.fakhrurr.moviecatalogue.databinding.ActivityDetailMovieBinding;
 import com.fakhrurr.moviecatalogue.viewmodel.DetailMovieModel;
 import com.fakhrurr.moviecatalogue.viewmodel.MovieModalFactory;
-import com.fakhrurr.moviecatalogue.viewmodel.MovieViewModel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.fakhrurr.moviecatalogue.data.services.ApiConfig.BASE_URL_IMAGE;
 
@@ -67,10 +72,21 @@ public class DetailMovieActivity extends AppCompatActivity {
                     .into(activityDetailBinding.detailContent.imagePoster);
             activityDetailBinding.detailContent.textTitle.setText(movieEntity.getTitle());
             activityDetailBinding.detailContent.textDate.setText(movieEntity.getReleaseDate());
-//        activityDetailBinding.detailContent.textGenre.setText(movieEntity.getGenre());
+            initRecycleViewGenre(movieEntity);
             activityDetailBinding.detailContent.contentTextDescription.setText(movieEntity.getOverview());
         });
     }
+
+    private void initRecycleViewGenre(DetailMovieResponse movieEntity) {
+        GenreMovieAdapter genreAdapter = new GenreMovieAdapter();
+        ArrayList<GenresItemNowPlaying> genresItemNowPlayingArrayList = new ArrayList<>(movieEntity.getGenres());
+        genreAdapter.setGenresItemList(genresItemNowPlayingArrayList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        activityDetailBinding.detailContent.rvGenre.setLayoutManager(linearLayoutManager);
+        activityDetailBinding.detailContent.rvGenre.setHasFixedSize(true);
+        activityDetailBinding.detailContent.rvGenre.setAdapter(genreAdapter);
+    }
+
 
     @Override
     public boolean onSupportNavigateUp() {
