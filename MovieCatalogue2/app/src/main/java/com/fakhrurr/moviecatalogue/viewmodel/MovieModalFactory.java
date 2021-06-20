@@ -8,13 +8,12 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
-import com.fakhrurr.moviecatalogue.data.repository.TvShowRepository;
 import com.fakhrurr.moviecatalogue.di.Injection;
 
 public class MovieModalFactory extends ViewModelProvider.NewInstanceFactory {
     @SuppressLint("StaticFieldLeak")
     private static volatile MovieModalFactory INSTANCE;
-    private MovieRepository repository;
+    private final MovieRepository repository;
     private Context mContext;
 
     public MovieModalFactory(MovieRepository repository) {
@@ -22,7 +21,7 @@ public class MovieModalFactory extends ViewModelProvider.NewInstanceFactory {
     }
 
     public static MovieModalFactory getINSTANCE(Context context) {
-        if(INSTANCE == null) {
+        if (INSTANCE == null) {
             synchronized (MovieRepository.class) {
                 INSTANCE = new MovieModalFactory(Injection.provideMovieRepository(context));
             }

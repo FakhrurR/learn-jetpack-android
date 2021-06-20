@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface MovieCallback {
     void onResponseSuccess(List<ResultsItemNowPlaying> results);
+
     void onResponseError(String err);
 }

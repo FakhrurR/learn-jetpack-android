@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -14,7 +13,7 @@ import com.fakhrurr.moviecatalogue.di.Injection;
 public class TVShowViewModalFactory extends ViewModelProvider.NewInstanceFactory {
     @SuppressLint("StaticFieldLeak")
     private static volatile TVShowViewModalFactory INSTANCE;
-    private TvShowRepository repository;
+    private final TvShowRepository repository;
     private Context mContext;
 
     public TVShowViewModalFactory(TvShowRepository repository) {
@@ -22,7 +21,7 @@ public class TVShowViewModalFactory extends ViewModelProvider.NewInstanceFactory
     }
 
     public static TVShowViewModalFactory getINSTANCE(Context context) {
-        if(INSTANCE == null) {
+        if (INSTANCE == null) {
             synchronized (TVShowViewModalFactory.class) {
                 INSTANCE = new TVShowViewModalFactory(Injection.provideTVShowRepository(context));
             }

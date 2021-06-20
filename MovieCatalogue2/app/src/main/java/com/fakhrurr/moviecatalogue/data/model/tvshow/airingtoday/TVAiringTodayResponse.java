@@ -1,51 +1,52 @@
 package com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
-public class TVAiringTodayResponse{
+import java.util.List;
 
-	@SerializedName("page")
-	private int page;
+public class TVAiringTodayResponse {
 
-	@SerializedName("total_pages")
-	private int totalPages;
+    @SerializedName("page")
+    private int page;
 
-	@SerializedName("results")
-	private List<ResultsItemTVAiringToday> results;
+    @SerializedName("total_pages")
+    private int totalPages;
 
-	@SerializedName("total_results")
-	private int totalResults;
+    @SerializedName("results")
+    private List<ResultsItemTVAiringToday> results;
 
-	public void setPage(int page){
-		this.page = page;
-	}
+    @SerializedName("total_results")
+    private int totalResults;
 
-	public int getPage(){
-		return page;
-	}
+    public int getPage() {
+        return page;
+    }
 
-	public void setTotalPages(int totalPages){
-		this.totalPages = totalPages;
-	}
+    public void setPage(int page) {
+        this.page = page;
+    }
 
-	public int getTotalPages(){
-		return totalPages;
-	}
+    public int getTotalPages() {
+        return totalPages;
+    }
 
-	public void setResults(List<ResultsItemTVAiringToday> results){
-		this.results = results;
-	}
+    public void setTotalPages(int totalPages) {
+        this.totalPages = totalPages;
+    }
 
-	public List<ResultsItemTVAiringToday> getResults(){
-		return results;
-	}
+    public List<ResultsItemTVAiringToday> getResults() {
+        return results;
+    }
 
-	public void setTotalResults(int totalResults){
-		this.totalResults = totalResults;
-	}
+    public void setResults(List<ResultsItemTVAiringToday> results) {
+        this.results = results;
+    }
 
-	public int getTotalResults(){
-		return totalResults;
-	}
+    public int getTotalResults() {
+        return totalResults;
+    }
+
+    public void setTotalResults(int totalResults) {
+        this.totalResults = totalResults;
+    }
 }

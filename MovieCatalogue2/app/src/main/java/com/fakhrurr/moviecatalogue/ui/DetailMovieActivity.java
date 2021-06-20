@@ -1,7 +1,6 @@
 package com.fakhrurr.moviecatalogue.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +18,6 @@ import com.fakhrurr.moviecatalogue.viewmodel.DetailMovieModel;
 import com.fakhrurr.moviecatalogue.viewmodel.MovieModalFactory;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static com.fakhrurr.moviecatalogue.data.services.ApiConfig.BASE_URL_IMAGE;
 
@@ -44,15 +42,15 @@ public class DetailMovieActivity extends AppCompatActivity {
             getSupportActionBar().setTitle(R.string.label_detail_movie);
         }
 
-            int movieId = getIntent().getIntExtra(EXTRA_COURSE, 0);
-            viewModel.setSelectedMovie(movieId);
-            loadingProgress();
-            movieDetail();
-        }
+        int movieId = getIntent().getIntExtra(EXTRA_COURSE, 0);
+        viewModel.setSelectedMovie(movieId);
+        loadingProgress();
+        movieDetail();
+    }
 
     private void loadingProgress() {
         viewModel.isLoading().observe(this, loading -> {
-            if(loading) {
+            if (loading) {
                 activityDetailBinding.detailContent.progressBar.setVisibility(View.VISIBLE);
                 activityDetailBinding.detailContent.movieBackground.setVisibility(View.GONE);
             } else {

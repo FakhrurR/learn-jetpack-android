@@ -28,7 +28,7 @@ public class RemoteDataSource {
     private static RemoteDataSource INSTANCE;
 
     public static RemoteDataSource getINSTANCE() {
-        if(INSTANCE == null) {
+        if (INSTANCE == null) {
             INSTANCE = new RemoteDataSource();
         }
         return INSTANCE;
@@ -41,7 +41,7 @@ public class RemoteDataSource {
             @Override
             public void onResponse(@NotNull Call<TVAiringTodayResponse> call, @NotNull Response<TVAiringTodayResponse> response) {
                 if (response.isSuccessful()) {
-                    if(response.body() != null) {
+                    if (response.body() != null) {
                         List<ResultsItemTVAiringToday> resultsItemNowPlaying = response.body().getResults();
                         callback.onResponseSuccess(resultsItemNowPlaying);
                     }
@@ -65,8 +65,8 @@ public class RemoteDataSource {
         detailTVResponseCall.enqueue(new Callback<DetailTVResponse>() {
             @Override
             public void onResponse(@NotNull Call<DetailTVResponse> call, @NotNull Response<DetailTVResponse> response) {
-                if(response.isSuccessful()) {
-                    if(response.body() != null) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
                         DetailTVResponse detailTVResponse = response.body();
                         callback.onResponseSuccess(detailTVResponse);
                     }
@@ -90,8 +90,8 @@ public class RemoteDataSource {
         detailMovieResponseCall.enqueue(new Callback<DetailMovieResponse>() {
             @Override
             public void onResponse(@NotNull Call<DetailMovieResponse> call, @NotNull Response<DetailMovieResponse> response) {
-                if(response.isSuccessful()) {
-                    if(response.body() != null) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
                         DetailMovieResponse detailMovieResponse = response.body();
                         callback.onResponseSuccess(detailMovieResponse);
                     }

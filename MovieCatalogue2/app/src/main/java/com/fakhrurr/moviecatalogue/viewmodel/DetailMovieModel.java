@@ -9,11 +9,9 @@ import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
 
 import java.util.List;
 
-import static java.lang.Integer.parseInt;
-
 public class DetailMovieModel extends ViewModel {
     private int movieId;
-    private MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
     public DetailMovieModel(MovieRepository repository) {
         this.movieRepository = repository;

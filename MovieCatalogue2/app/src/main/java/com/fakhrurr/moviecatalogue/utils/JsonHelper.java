@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class JsonHelper {
-    private Context context;
+    private final Context context;
 
     public JsonHelper(Context context) {
         this.context = context;

@@ -1,7 +1,6 @@
 package com.fakhrurr.moviecatalogue.ui;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.fakhrurr.moviecatalogue.adapters.MovieAdapter;
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
 import com.fakhrurr.moviecatalogue.databinding.MovieFragmentBinding;
-import com.fakhrurr.moviecatalogue.utils.DummyData;
 import com.fakhrurr.moviecatalogue.viewmodel.MovieModalFactory;
 import com.fakhrurr.moviecatalogue.viewmodel.MovieViewModel;
 

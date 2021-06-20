@@ -5,6 +5,7 @@ import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAi
 import java.util.List;
 
 public interface TVShowCallback {
-     void onResponseSuccess(List<ResultsItemTVAiringToday> results);
-     void onResponseError(String err);
+    void onResponseSuccess(List<ResultsItemTVAiringToday> results);
+
+    void onResponseError(String err);
 }

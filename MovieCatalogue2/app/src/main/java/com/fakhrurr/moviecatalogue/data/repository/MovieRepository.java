@@ -22,7 +22,7 @@ public class MovieRepository implements MovieSourceData {
     }
 
     public static MovieRepository getINSTANCE(RemoteDataSource remoteDataSource) {
-        if(INSTANCE == null) {
+        if (INSTANCE == null) {
             synchronized (MovieRepository.class) {
                 INSTANCE = new MovieRepository(remoteDataSource);
             }

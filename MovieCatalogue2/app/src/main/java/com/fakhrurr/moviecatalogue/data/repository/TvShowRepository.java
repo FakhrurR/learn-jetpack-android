@@ -1,22 +1,20 @@
 package com.fakhrurr.moviecatalogue.data.repository;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
 import com.fakhrurr.moviecatalogue.data.repository.callback.DetailTVShowCallback;
-import com.fakhrurr.moviecatalogue.data.repository.source.RemoteDataSource;
 import com.fakhrurr.moviecatalogue.data.repository.callback.TVShowCallback;
+import com.fakhrurr.moviecatalogue.data.repository.source.RemoteDataSource;
 import com.fakhrurr.moviecatalogue.data.repository.source.TvShowDataSource;
 
 import java.util.List;
 
 public class TvShowRepository implements TvShowDataSource {
-    private volatile static TvShowRepository INSTANCE = null;
     private static final String TAG = TvShowRepository.class.getSimpleName();
+    private volatile static TvShowRepository INSTANCE = null;
     private final RemoteDataSource remoteDataSource;
 
     private final MutableLiveData<Boolean> _isLoading = new MutableLiveData<>();
@@ -26,7 +24,7 @@ public class TvShowRepository implements TvShowDataSource {
     }
 
     public static TvShowRepository getINSTANCE(RemoteDataSource remoteDataSource) {
-        if(INSTANCE == null) {
+        if (INSTANCE == null) {
             synchronized (TvShowRepository.class) {
                 INSTANCE = new TvShowRepository(remoteDataSource);
             }

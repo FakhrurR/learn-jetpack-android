@@ -4,9 +4,7 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
-import com.fakhrurr.moviecatalogue.R;
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
-import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
 import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
 import com.fakhrurr.moviecatalogue.utils.DummyData;
 
@@ -22,14 +20,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 public class DetailViewModelTest {
-    private DetailMovieModel detailViewModel;
-
     private final DetailMovieResponse dummyNowPlaying = DummyData.generateDummyDetailNowPlaying();
     private final int movieId = dummyNowPlaying.getId();
-
     @Rule
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
-
+    private DetailMovieModel detailViewModel;
     @Mock
     private MovieRepository repository;
 

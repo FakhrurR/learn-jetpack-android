@@ -1,12 +1,12 @@
 package com.fakhrurr.moviecatalogue.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -26,6 +26,7 @@ public class DetailTvShowActivity extends AppCompatActivity {
     public static String EXTRA_COURSE = "extra_course";
     public ActivityDetailTvShowBinding activityDetailTvShowBinding;
     private DetailTVShowModel viewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +65,7 @@ public class DetailTvShowActivity extends AppCompatActivity {
 
     private void loadingProgressBar() {
         viewModel.isLoading().observe(this, aBoolean -> {
-            if(aBoolean) {
+            if (aBoolean) {
                 activityDetailTvShowBinding.detailContent.progressBar.setVisibility(View.VISIBLE);
                 activityDetailTvShowBinding.detailContent.movieBackground.setVisibility(View.GONE);
             } else {

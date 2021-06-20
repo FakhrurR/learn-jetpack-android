@@ -12,7 +12,7 @@ public class TvShowViewModel extends ViewModel {
     private final TvShowRepository tvShowRepository;
 
     public TvShowViewModel(TvShowRepository tvShowRepository) {
-       this.tvShowRepository = tvShowRepository;
+        this.tvShowRepository = tvShowRepository;
     }
 
     public LiveData<Boolean> isLoading() {
@@ -20,6 +20,6 @@ public class TvShowViewModel extends ViewModel {
     }
 
     public LiveData<List<ResultsItemTVAiringToday>> getAiringToday() {
-       return tvShowRepository.getListTVAiringToday();
+        return tvShowRepository.getListTVAiringToday();
     }
 }

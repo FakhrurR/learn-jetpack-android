@@ -47,6 +47,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     public static class MovieViewHolder extends RecyclerView.ViewHolder {
         private final ItemListMovieBinding binding;
+
         MovieViewHolder(ItemListMovieBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
@@ -67,6 +68,6 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
                     .load(BASE_URL_IMAGE + resultsItem.getPosterPath())
                     .apply(RequestOptions.placeholderOf(R.drawable.ic_loading).error(R.drawable.ic_error))
                     .into(binding.imgItem);
-      }
+        }
     }
 }
