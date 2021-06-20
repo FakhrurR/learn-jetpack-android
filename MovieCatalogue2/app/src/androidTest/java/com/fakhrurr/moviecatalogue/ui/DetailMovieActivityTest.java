@@ -62,8 +62,10 @@ public class DetailMovieActivityTest {
 
     @Test
     public void loadDetailMovies() throws InterruptedException {
+
         onView(withId(R.id.tabs)).perform(new TabsMatcher(1));
         Thread.sleep(2000);
+
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
         Thread.sleep(2000);
 

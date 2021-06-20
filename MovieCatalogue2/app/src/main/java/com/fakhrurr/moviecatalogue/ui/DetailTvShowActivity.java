@@ -51,6 +51,7 @@ public class DetailTvShowActivity extends AppCompatActivity {
 
     private void tvShowDetail() {
         viewModel.getDetailTVShow().observe(this, detailTVResponse -> {
+            activityDetailTvShowBinding.detailContent.imagePoster.setTag(detailTVResponse.getPosterPath());
             Glide.with(this)
                     .asBitmap()
                     .load(BASE_URL_IMAGE + detailTVResponse.getPosterPath())
