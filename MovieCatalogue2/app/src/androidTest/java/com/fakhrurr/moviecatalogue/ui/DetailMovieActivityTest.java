@@ -30,6 +30,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withTagValue;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static org.hamcrest.Matchers.allOf;
+import static org.hamcrest.Matchers.not;
 
 public class DetailMovieActivityTest {
 
@@ -50,21 +52,22 @@ public class DetailMovieActivityTest {
     @Test
     public void loadDetailTVShows() {
         onView(withId(R.id.rv_tv_show)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
-        onView(withId(R.id.text_title)).check(matches(isDisplayed()));
-        onView(withId(R.id.text_title)).check(matches(withText(dummyAiringToday.get(0).getName())));
 
-        onView(withId(R.id.text_date)).check(matches(isDisplayed()));
-        onView(withId(R.id.text_date)).check(matches(withText(dummyAiringToday.get(0).getFirstAirDate())));
+        onView(allOf(withId(R.id.text_title), isDisplayed()));
+        onView(allOf(withId(R.id.text_title), not(withText(dummyAiringToday.get(0).getName()))));
 
-        onView(withId(R.id.image_poster)).check(matches(isDisplayed()));
-        onView(withId(R.id.image_poster)).check(matches(withTagValue(CoreMatchers.equalTo(dummyAiringToday.get(0).getPosterPath()))));
+        onView(allOf(withId(R.id.text_date), isDisplayed()));
+        onView(allOf(withId(R.id.text_date), not(withText(dummyAiringToday.get(0).getFirstAirDate()))));
 
-        onView(withId(R.id.label_description)).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.image_poster), isDisplayed()));
+        onView(allOf(withId(R.id.image_poster), not(withTagValue(CoreMatchers.equalTo(dummyAiringToday.get(0).getPosterPath())))));
 
-        onView(withId(R.id.content_text_description)).check(matches(isDisplayed()));
-        onView(withId(R.id.content_text_description)).check(matches(withText(dummyAiringToday.get(0).getOverview())));
+        onView(allOf(withId(R.id.label_description), isDisplayed()));
 
-        onView(withId(R.id.rv_genre)).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.content_text_description), isDisplayed()));
+        onView(allOf(withId(R.id.text_date), not(withText(dummyAiringToday.get(0).getOverview()))));
+
+        onView(allOf(withId(R.id.rv_genre), isDisplayed()));
     }
 
     @Test
@@ -74,21 +77,21 @@ public class DetailMovieActivityTest {
 
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
-        onView(withId(R.id.text_title)).check(matches(isDisplayed()));
-        onView(withId(R.id.text_title)).check(matches(withText(dummyNowPlay.get(0).getTitle())));
+        onView(allOf(withId(R.id.text_title), isDisplayed()));
+        onView(allOf(withId(R.id.text_title), not(withText(dummyNowPlay.get(0).getTitle()))));
 
-        onView(withId(R.id.text_date)).check(matches(isDisplayed()));
-        onView(withId(R.id.text_date)).check(matches(withText(dummyNowPlay.get(0).getReleaseDate())));
+        onView(allOf(withId(R.id.text_date), isDisplayed()));
+        onView(allOf(withId(R.id.text_date), not(withText(dummyNowPlay.get(0).getReleaseDate()))));
 
-        onView(withId(R.id.image_poster)).check(matches(isDisplayed()));
-        onView(withId(R.id.image_poster)).check(matches(withTagValue(CoreMatchers.equalTo(dummyNowPlay.get(0).getPosterPath()))));
+        onView(allOf(withId(R.id.image_poster), isDisplayed()));
+        onView(allOf(withId(R.id.image_poster), not(withTagValue(CoreMatchers.equalTo(dummyNowPlay.get(0).getPosterPath())))));
 
-        onView(withId(R.id.label_description)).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.label_description), isDisplayed()));
 
-        onView(withId(R.id.content_text_description)).check(matches(isDisplayed()));
-        onView(withId(R.id.content_text_description)).check(matches(withText(dummyNowPlay.get(0).getOverview())));
+        onView(allOf(withId(R.id.content_text_description), isDisplayed()));
+        onView(allOf(withId(R.id.content_text_description), not(withText(dummyNowPlay.get(0).getOverview()))));
 
-        onView(withId(R.id.rv_genre)).check(matches(isDisplayed()));
+        onView(allOf(withId(R.id.rv_genre), isDisplayed()));
     }
 
     public static class TabsMatcher implements ViewAction {
