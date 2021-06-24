@@ -4,7 +4,7 @@ import com.fakhrurr.moviecatalogue.R;
 import com.fakhrurr.moviecatalogue.data.MovieEntity;
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.GenresItemNowPlaying;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.GenresItemTVAiringToday;
@@ -363,8 +363,8 @@ public class DummyData {
         return movieEntityArrayList;
     }
 
-    public static List<ResultsItemNowPlaying> generateDummyNowPlaying() {
-        List<ResultsItemNowPlaying> resultsItemNowPlayingList = new ArrayList<>();
+    public static List<ResultsItemMovie> generateDummyNowPlaying() {
+        List<ResultsItemMovie> resultsItemNowPlayingList = new ArrayList<>();
         try {
             JSONArray array = new JSONArray(nowPlayData);
             for (int i = 0; i < array.length(); i++) {
@@ -378,7 +378,7 @@ public class DummyData {
                 String originalLanguage = object.getString("original_language");
                 String poster = object.getString("poster_path");
 
-                ResultsItemNowPlaying movieResponse = new ResultsItemNowPlaying();
+                ResultsItemMovie movieResponse = new ResultsItemMovie();
                 movieResponse.setId(id);
                 movieResponse.setTitle(title);
                 movieResponse.setReleaseDate(releaseDate);

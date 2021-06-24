@@ -23,15 +23,6 @@ public class FakeTVShowRepository implements TvShowDataSource {
         this.remoteDataSource = remoteDataSource;
     }
 
-    public static FakeTVShowRepository getINSTANCE(RemoteDataSource remoteDataSource) {
-        if (INSTANCE == null) {
-            synchronized (FakeTVShowRepository.class) {
-                INSTANCE = new FakeTVShowRepository(remoteDataSource);
-            }
-        }
-        return INSTANCE;
-    }
-
     public LiveData<Boolean> isLoading() {
         return _isLoading;
     }

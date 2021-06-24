@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fakhrurr.moviecatalogue.R;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.databinding.ItemListMovieBinding;
 import com.fakhrurr.moviecatalogue.ui.DetailMovieActivity;
 
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 import static com.fakhrurr.moviecatalogue.data.services.ApiConfig.BASE_URL_IMAGE;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
-    private final ArrayList<ResultsItemNowPlaying> listMovies = new ArrayList<>();
+    private final ArrayList<ResultsItemMovie> listMovies = new ArrayList<>();
 
-    public void setMovies(ArrayList<ResultsItemNowPlaying> listCourses) {
+    public void setMovies(ArrayList<ResultsItemMovie> listCourses) {
         if (listCourses == null) return;
         this.listMovies.clear();
         this.listMovies.addAll(listCourses);
@@ -36,7 +36,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.MovieViewHolder holder, int position) {
-        ResultsItemNowPlaying resultsItem = listMovies.get(position);
+        ResultsItemMovie resultsItem = listMovies.get(position);
         holder.bind(resultsItem);
     }
 
@@ -53,7 +53,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             this.binding = binding;
         }
 
-        void bind(ResultsItemNowPlaying resultsItem) {
+        void bind(ResultsItemMovie resultsItem) {
             binding.titleName.setText(resultsItem.getTitle());
             binding.dateMovie.setText(resultsItem.getReleaseDate());
             binding.rate.setText(String.valueOf(resultsItem.getVoteAverage()));

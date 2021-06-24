@@ -9,7 +9,7 @@ import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 
 import com.fakhrurr.moviecatalogue.R;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.utils.DummyData;
 import com.fakhrurr.moviecatalogue.utils.EspressoIdlingResource;
@@ -25,7 +25,6 @@ import java.util.List;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withTagValue;
@@ -35,7 +34,7 @@ import static org.hamcrest.Matchers.not;
 
 public class DetailMovieActivityTest {
 
-    private final List<ResultsItemNowPlaying> dummyNowPlay = DummyData.generateDummyNowPlaying();
+    private final List<ResultsItemMovie> dummyNowPlay = DummyData.generateDummyNowPlaying();
     private final List<ResultsItemTVAiringToday> dummyAiringToday = DummyData.generateDummyTVAiringToday();
 
     @Before

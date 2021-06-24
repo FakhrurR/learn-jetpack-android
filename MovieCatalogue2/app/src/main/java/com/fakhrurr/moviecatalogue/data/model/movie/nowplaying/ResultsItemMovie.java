@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ResultsItemNowPlaying {
+public class ResultsItemMovie {
 
     @SerializedName("overview")
     private String overview;
@@ -42,11 +42,20 @@ public class ResultsItemNowPlaying {
     @SerializedName("id")
     private int id;
 
+    @SerializedName("name")
+    private int name;
+
+    @SerializedName("first_air_date")
+    private String firstAirDate;
+
     @SerializedName("adult")
     private boolean adult;
 
     @SerializedName("vote_count")
     private int voteCount;
+
+    public ResultsItemMovie() {
+    }
 
     public String getOverview() {
         return overview;
@@ -158,5 +167,21 @@ public class ResultsItemNowPlaying {
 
     public void setVoteCount(int voteCount) {
         this.voteCount = voteCount;
+    }
+
+    public int getName() {
+        return name;
+    }
+
+    public void setName(int name) {
+        this.name = name;
+    }
+
+    public String getFirstAirDate() {
+        return firstAirDate;
+    }
+
+    public void setFirstAirDate(String firstAirDate) {
+        this.firstAirDate = firstAirDate;
     }
 }

@@ -4,8 +4,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
+import com.fakhrurr.moviecatalogue.data.repository.source.ApiResponse;
 import com.fakhrurr.moviecatalogue.utils.DummyData;
 
 import org.junit.Before;
@@ -31,7 +32,7 @@ public class MovieViewModelTest {
     private MovieRepository repository;
 
     @Mock
-    private Observer<List<ResultsItemNowPlaying>> observer;
+    private Observer<List<ResultsItemMovie>> observer;
 
     @Before
     public void setUp() {
@@ -41,12 +42,12 @@ public class MovieViewModelTest {
 
     @Test
     public void getNowPlaying() {
-        List<ResultsItemNowPlaying> dummyNowPlay = DummyData.generateDummyNowPlaying();
-        MutableLiveData<List<ResultsItemNowPlaying>> resultsItemNowPlayingMutableLiveData = new MutableLiveData<>();
-        resultsItemNowPlayingMutableLiveData.setValue(dummyNowPlay);
+        List<ResultsItemMovie> dummyNowPlay = DummyData.generateDummyNowPlaying();
+        MutableLiveData<ApiResponse<List<ResultsItemMovie>>> resultsItemNowPlayingMutableLiveData = new MutableLiveData<>();
+        resultsItemNowPlayingMutableLiveData.setValue(ApiResponse.success(dummyNowPlay));
 
         when(repository.getListNowPlaying()).thenReturn(resultsItemNowPlayingMutableLiveData);
-        List<ResultsItemNowPlaying> resultsItemNowPlayingList = movieViewModel.getNowPlaying().getValue();
+        List<ResultsItemMovie> resultsItemNowPlayingList = movieViewModel.getNowPlaying().getValue();
         verify(repository).getListNowPlaying();
         assertNotNull(resultsItemNowPlayingList);
         assertEquals(20, resultsItemNowPlayingList.size());

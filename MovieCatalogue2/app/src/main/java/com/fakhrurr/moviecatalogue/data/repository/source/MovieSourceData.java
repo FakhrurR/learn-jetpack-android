@@ -3,14 +3,10 @@ package com.fakhrurr.moviecatalogue.data.repository.source;
 import androidx.lifecycle.LiveData;
 
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
-
-import java.util.List;
+import com.fakhrurr.moviecatalogue.vo.Resource;
 
 public interface MovieSourceData {
-    LiveData<DetailMovieResponse> getDetailMovieResponse(int id);
+    LiveData<Resource<DetailMovieResponse>> getDetailMovieResponse(int id);
 
-    LiveData<List<ResultsItemNowPlaying>> getListNowPlaying();
-
-    LiveData<Boolean> isLoading();
+    LiveData<Resource<DetailMovieResponse>> getListNowPlaying();
 }

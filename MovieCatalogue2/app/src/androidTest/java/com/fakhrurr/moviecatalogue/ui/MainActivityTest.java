@@ -12,7 +12,7 @@ import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
 import com.fakhrurr.moviecatalogue.R;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.utils.DummyData;
 import com.fakhrurr.moviecatalogue.utils.EspressoIdlingResource;
@@ -38,7 +38,7 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class MainActivityTest {
 
-    private final List<ResultsItemNowPlaying> dummyNowPlay = DummyData.generateDummyNowPlaying();
+    private final List<ResultsItemMovie> dummyNowPlay = DummyData.generateDummyNowPlaying();
     private final List<ResultsItemTVAiringToday> dummyAiringToday = DummyData.generateDummyTVAiringToday();
 
     private static Matcher<View> childAtPosition(

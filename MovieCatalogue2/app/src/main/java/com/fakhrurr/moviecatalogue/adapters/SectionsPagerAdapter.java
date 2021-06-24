@@ -10,12 +10,13 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import com.fakhrurr.moviecatalogue.R;
+import com.fakhrurr.moviecatalogue.ui.FavoriteFragment;
 import com.fakhrurr.moviecatalogue.ui.MovieFragment;
 import com.fakhrurr.moviecatalogue.ui.TvShowFragment;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
     @StringRes
-    private static final int[] TAB_TITLES = new int[]{R.string.label_tv_show, R.string.label_movie};
+    private static final int[] TAB_TITLES = new int[]{R.string.label_tv_show, R.string.label_movie, R.string.label_favorite};
     private final Context mContext;
 
     public SectionsPagerAdapter(Context mContext, @NonNull FragmentManager fm) {
@@ -31,6 +32,8 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 return new TvShowFragment();
             case 1:
                 return new MovieFragment();
+            case 2:
+                return new FavoriteFragment();
             default:
                 return new Fragment();
         }
@@ -44,6 +47,6 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 }

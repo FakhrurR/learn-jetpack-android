@@ -3,7 +3,7 @@ package com.fakhrurr.moviecatalogue.data;
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.repository.callback.DetailMovieCallback;
 import com.fakhrurr.moviecatalogue.data.repository.callback.MovieCallback;
 import com.fakhrurr.moviecatalogue.data.repository.source.RemoteDataSource;
@@ -26,7 +26,7 @@ import static org.mockito.Mockito.verify;
 public class MovieRepositoryTest {
     private final RemoteDataSource remote = Mockito.mock(RemoteDataSource.class);
     private final FakeMovieRepository fakeMovieRepository = new FakeMovieRepository(remote);
-    private final List<ResultsItemNowPlaying> nowPlayingArrayList = DummyData.generateDummyNowPlaying();
+    private final List<ResultsItemMovie> nowPlayingArrayList = DummyData.generateDummyNowPlaying();
     private final DetailMovieResponse detailMovieResponse = DummyData.generateDummyDetailNowPlaying();
     private final int movieId = detailMovieResponse.getId();
     @Rule
@@ -38,7 +38,7 @@ public class MovieRepositoryTest {
             ((MovieCallback) invocation.getArgument(0)).onResponseSuccess(nowPlayingArrayList);
             return null;
         }).when(remote).getNowPlaying(any(MovieCallback.class));
-        List<ResultsItemNowPlaying> resultsItemNowPlayings = LiveDataTestUtil.getValue(fakeMovieRepository.getListNowPlaying());
+        List<ResultsItemMovie> resultsItemNowPlayings = LiveDataTestUtil.getValue(fakeMovieRepository.getListNowPlaying());
         verify(remote).getNowPlaying(any(MovieCallback.class));
         assertNotNull(resultsItemNowPlayings);
         assertEquals(nowPlayingArrayList.size(), resultsItemNowPlayings.size());

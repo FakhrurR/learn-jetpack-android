@@ -2,15 +2,16 @@ package com.fakhrurr.moviecatalogue.data.repository.source;
 
 import android.annotation.SuppressLint;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.NowPlayingResponse;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.TVAiringTodayResponse;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
-import com.fakhrurr.moviecatalogue.data.repository.callback.DetailMovieCallback;
 import com.fakhrurr.moviecatalogue.data.repository.callback.DetailTVShowCallback;
-import com.fakhrurr.moviecatalogue.data.repository.callback.MovieCallback;
 import com.fakhrurr.moviecatalogue.data.repository.callback.TVShowCallback;
 import com.fakhrurr.moviecatalogue.data.services.ApiConfig;
 import com.fakhrurr.moviecatalogue.utils.EspressoIdlingResource;
@@ -26,6 +27,9 @@ import retrofit2.Response;
 public class RemoteDataSource {
     @SuppressLint("StaticFieldLeak")
     private static RemoteDataSource INSTANCE;
+
+    private MutableLiveData<ApiResponse<DetailMovieResponse>> detailMovieResponseMutableLiveData = new MutableLiveData<>();
+    private MutableLiveData<ApiResponse<List<ResultsItemMovie>>> resultMovie = new MutableLiveData<>();
 
     public static RemoteDataSource getINSTANCE() {
         if (INSTANCE == null) {
@@ -84,7 +88,7 @@ public class RemoteDataSource {
         });
     }
 
-    public void getDetailMovie(int id, DetailMovieCallback callback) {
+    public LiveData<ApiResponse<DetailMovieResponse>> getDetailMovie(int id) {
         EspressoIdlingResource.increment();
         Call<DetailMovieResponse> detailMovieResponseCall = ApiConfig.getApiService().getDetailMovie(id);
         detailMovieResponseCall.enqueue(new Callback<DetailMovieResponse>() {
@@ -93,10 +97,10 @@ public class RemoteDataSource {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         DetailMovieResponse detailMovieResponse = response.body();
-                        callback.onResponseSuccess(detailMovieResponse);
+                        detailMovieResponseMutableLiveData.setValue(ApiResponse.success(detailMovieResponse));
                     }
                 } else {
-                    callback.onResponseError(response.message());
+                    detailMovieResponseMutableLiveData.setValue(ApiResponse.empty(response.message(), null));
                 }
                 EspressoIdlingResource.decrement();
             }
@@ -104,12 +108,13 @@ public class RemoteDataSource {
             @Override
             public void onFailure(@NotNull Call<DetailMovieResponse> call, @NotNull Throwable t) {
                 EspressoIdlingResource.decrement();
-                callback.onResponseError(t.getMessage());
+                detailMovieResponseMutableLiveData.setValue(ApiResponse.error(t.getMessage(), null));
             }
         });
+        return detailMovieResponseMutableLiveData;
     }
 
-    public void getNowPlaying(MovieCallback callback) {
+    public LiveData<ApiResponse<List<ResultsItemMovie>>> getNowPlaying() {
         EspressoIdlingResource.increment();
         Call<NowPlayingResponse> responseCall = ApiConfig.getApiService().getMovieNowPlaying();
         responseCall.enqueue(new Callback<NowPlayingResponse>() {
@@ -117,18 +122,21 @@ public class RemoteDataSource {
             public void onResponse(@NotNull Call<NowPlayingResponse> call, @NotNull Response<NowPlayingResponse> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        List<ResultsItemNowPlaying> resultsItemNowPlayings = response.body().getResults();
-                        callback.onResponseSuccess(resultsItemNowPlayings);
+                        List<ResultsItemMovie> resultsItemNowPlayings = response.body().getResults();
+                        resultMovie.setValue(ApiResponse.success(resultsItemNowPlayings));
                     }
+                } else {
+                    resultMovie.setValue(ApiResponse.empty(response.message(), null));
                 }
                 EspressoIdlingResource.decrement();
             }
 
             @Override
             public void onFailure(@NotNull Call<NowPlayingResponse> call, @NotNull Throwable t) {
-                callback.onResponseError(t.getMessage());
+                resultMovie.setValue(ApiResponse.error(t.getMessage(), null));
                 EspressoIdlingResource.decrement();
             }
         });
+        return resultMovie;
     }
 }

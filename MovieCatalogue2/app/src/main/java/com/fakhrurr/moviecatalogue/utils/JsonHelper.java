@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 
 import org.json.JSONArray;
@@ -38,12 +38,12 @@ public class JsonHelper {
         }
     }
 
-    public LiveData<List<ResultsItemNowPlaying>> loadMovies() {
-        MutableLiveData<List<ResultsItemNowPlaying>> list = new MutableLiveData<>();
+    public LiveData<List<ResultsItemMovie>> loadMovies() {
+        MutableLiveData<List<ResultsItemMovie>> list = new MutableLiveData<>();
         try {
             JSONObject responseObject = new JSONObject(parsingFileToString("movie_response.json"));
             JSONArray listArray = responseObject.getJSONArray("movies");
-            List<ResultsItemNowPlaying> resultsItemNowPlayingList = new ArrayList<>();
+            List<ResultsItemMovie> resultsItemNowPlayingList = new ArrayList<>();
             for (int i = 0; i < listArray.length(); i++) {
                 JSONObject movie = listArray.getJSONObject(i);
 
@@ -55,7 +55,7 @@ public class JsonHelper {
                 String originalLanguage = movie.getString("original_language");
                 String poster = movie.getString("poster_path");
 
-                ResultsItemNowPlaying movieResponse = new ResultsItemNowPlaying();
+                ResultsItemMovie movieResponse = new ResultsItemMovie();
                 movieResponse.setId(id);
                 movieResponse.setTitle(title);
                 movieResponse.setReleaseDate(releaseDate);

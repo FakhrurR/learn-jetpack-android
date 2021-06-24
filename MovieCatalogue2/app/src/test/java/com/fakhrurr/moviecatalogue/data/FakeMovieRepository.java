@@ -4,11 +4,12 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemNowPlaying;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.repository.callback.DetailMovieCallback;
 import com.fakhrurr.moviecatalogue.data.repository.callback.MovieCallback;
 import com.fakhrurr.moviecatalogue.data.repository.source.MovieSourceData;
 import com.fakhrurr.moviecatalogue.data.repository.source.RemoteDataSource;
+import com.fakhrurr.moviecatalogue.vo.Resource;
 
 import java.util.List;
 
@@ -19,15 +20,6 @@ public class FakeMovieRepository implements MovieSourceData {
 
     public FakeMovieRepository(RemoteDataSource remoteDataSource) {
         this.remoteDataSource = remoteDataSource;
-    }
-
-    public static FakeMovieRepository getINSTANCE(RemoteDataSource remoteDataSource) {
-        if (INSTANCE == null) {
-            synchronized (FakeMovieRepository.class) {
-                INSTANCE = new FakeMovieRepository(remoteDataSource);
-            }
-        }
-        return INSTANCE;
     }
 
     public LiveData<Boolean> isLoading() {
@@ -54,12 +46,12 @@ public class FakeMovieRepository implements MovieSourceData {
     }
 
     @Override
-    public LiveData<List<ResultsItemNowPlaying>> getListNowPlaying() {
-        MutableLiveData<List<ResultsItemNowPlaying>> listMutableLiveData = new MutableLiveData<>();
+    public LiveData<Resource<DetailMovieResponse>> getListNowPlaying() {
+        MutableLiveData<List<ResultsItemMovie>> listMutableLiveData = new MutableLiveData<>();
         _isLoading.setValue(true);
         remoteDataSource.getNowPlaying(new MovieCallback() {
             @Override
-            public void onResponseSuccess(List<ResultsItemNowPlaying> results) {
+            public void onResponseSuccess(List<ResultsItemMovie> results) {
                 _isLoading.setValue(false);
                 listMutableLiveData.setValue(results);
             }
