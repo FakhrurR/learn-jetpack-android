@@ -3,6 +3,7 @@ package com.fakhrurr.moviecatalogue.data.model.movie.detail;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.fakhrurr.moviecatalogue.data.local.entity.GenresItem;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class DetailMovieResponse implements Parcelable {
     @SerializedName("revenue")
     private int revenue;
     @SerializedName("genres")
-    private List<GenresItemNowPlaying> genres;
+    private List<GenresItem> genres;
     @SerializedName("popularity")
     private double popularity;
     @SerializedName("production_countries")
@@ -145,11 +146,11 @@ public class DetailMovieResponse implements Parcelable {
         this.revenue = revenue;
     }
 
-    public List<GenresItemNowPlaying> getGenres() {
+    public List<GenresItem> getGenres() {
         return genres;
     }
 
-    public void setGenres(List<GenresItemNowPlaying> genres) {
+    public void setGenres(List<GenresItem> genres) {
         this.genres = genres;
     }
 

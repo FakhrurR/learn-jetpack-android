@@ -1,12 +1,25 @@
 package com.fakhrurr.moviecatalogue.data.repository.source;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.PagedList;
 
-import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
+import com.fakhrurr.moviecatalogue.data.local.entity.MovieEntity;
 import com.fakhrurr.moviecatalogue.vo.Resource;
 
-public interface MovieSourceData {
-    LiveData<Resource<DetailMovieResponse>> getDetailMovieResponse(int id);
+import java.util.List;
 
-    LiveData<Resource<DetailMovieResponse>> getListNowPlaying();
+public interface  MovieSourceData {
+    LiveData<Resource<com.fakhrurr.moviecatalogue.data.local.entity.MovieEntity>> getDetailMovieResponse(int id);
+
+    LiveData<Resource<List<MovieEntity>>> getListNowPlaying();
+
+    LiveData<Resource<MovieEntity>> getDetailTVShowResponse(int id);
+
+    LiveData<Resource<List<MovieEntity>>> getListAiringToday();
+
+    LiveData<Resource<PagedList<MovieEntity>>> getFavoriteMovies();
+
+    LiveData<Resource<PagedList<MovieEntity>>> getFavoriteTvShows();
+
+    void setFavoriteStatus(MovieEntity movieEntity);
 }

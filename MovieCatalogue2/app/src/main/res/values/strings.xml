@@ -22,4 +22,7 @@
     <string name="label_detail_movie">Detail Movie</string>
     <string name="label_coma">,</string>
     <string name="label_favorite">Favorite</string>
+    <string name="error_message">Error</string>
+    <string name="label_add_favorite">tambah favorit</string>
+    <string name="remove_from_favorite">hapus favorit</string>
 </resources>

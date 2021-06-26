@@ -1,5 +1,7 @@
 package com.fakhrurr.moviecatalogue.data.model.movie.nowplaying;
 
+import com.fakhrurr.moviecatalogue.data.local.entity.GenresItem;
+import com.fakhrurr.moviecatalogue.data.model.movie.detail.GenresItemNowPlaying;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -43,7 +45,7 @@ public class ResultsItemMovie {
     private int id;
 
     @SerializedName("name")
-    private int name;
+    private String name;
 
     @SerializedName("first_air_date")
     private String firstAirDate;
@@ -53,6 +55,9 @@ public class ResultsItemMovie {
 
     @SerializedName("vote_count")
     private int voteCount;
+
+    @SerializedName("genres")
+    private List<GenresItem> genres;
 
     public ResultsItemMovie() {
     }
@@ -169,11 +174,11 @@ public class ResultsItemMovie {
         this.voteCount = voteCount;
     }
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -183,5 +188,13 @@ public class ResultsItemMovie {
 
     public void setFirstAirDate(String firstAirDate) {
         this.firstAirDate = firstAirDate;
+    }
+
+    public List<GenresItem> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<GenresItem> genres) {
+        this.genres = genres;
     }
 }

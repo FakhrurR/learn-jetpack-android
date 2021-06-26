@@ -3,21 +3,17 @@ package com.fakhrurr.moviecatalogue.data.local.entity;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.ForeignKey;
-import androidx.room.Index;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 
-@Entity(tableName = "movieentity",
-        primaryKeys = {"movieId", "tvShowId"},
-        foreignKeys = @ForeignKey(entity = MovieEntity.class,
-                parentColumns = "movieId",
-                childColumns = "movieId"),
-        indices = {@Index(value = "movieId"),
-                @Index(value = "tvShowId")}
-)
+import java.util.List;
+
+@Entity(tableName = "movie_entity")
 public class MovieEntity implements Parcelable {
 
     @ColumnInfo(name = "overview")
@@ -51,15 +47,10 @@ public class MovieEntity implements Parcelable {
     @ColumnInfo(name = "movieId")
     private int id;
 
-    public MovieEntity(int id, String title, String overview,  String posterPath, String backdropPath, String releaseDate,double voteAverage) {
-        this.overview = overview;
-        this.title = title;
-        this.posterPath = posterPath;
-        this.backdropPath = backdropPath;
-        this.releaseDate = releaseDate;
-        this.voteAverage = voteAverage;
-        this.id = id;
-    }
+    @ColumnInfo(name = "type")
+    private int type;
+
+    private boolean status = false;
 
     protected MovieEntity(Parcel in) {
         overview = in.readString();
@@ -72,6 +63,41 @@ public class MovieEntity implements Parcelable {
         releaseDate = in.readString();
         voteAverage = in.readDouble();
         id = in.readInt();
+        type = in.readInt();
+        status = in.readByte() != 0;
+    }
+
+    public MovieEntity() {
+
+    }
+
+    public MovieEntity(int id, String title, String description, String releaseDate, String poster) {
+        this.id = id;
+        this.title = title;
+        this.overview = description;
+        this.releaseDate = releaseDate;
+        this.posterPath = poster;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(overview);
+        dest.writeString(originalLanguage);
+        dest.writeString(originalTitle);
+        dest.writeByte((byte) (video ? 1 : 0));
+        dest.writeString(title);
+        dest.writeString(posterPath);
+        dest.writeString(backdropPath);
+        dest.writeString(releaseDate);
+        dest.writeDouble(voteAverage);
+        dest.writeInt(id);
+        dest.writeInt(type);
+        dest.writeByte((byte) (status ? 1 : 0));
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     public static final Creator<MovieEntity> CREATOR = new Creator<MovieEntity>() {
@@ -85,6 +111,25 @@ public class MovieEntity implements Parcelable {
             return new MovieEntity[size];
         }
     };
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public MovieEntity(int id, String title, String overview, String posterPath, String backdropPath, String releaseDate, double voteAverage, int type) {
+        this.overview = overview;
+        this.title = title;
+        this.posterPath = posterPath;
+        this.backdropPath = backdropPath;
+        this.releaseDate = releaseDate;
+        this.voteAverage = voteAverage;
+        this.id = id;
+        this.type = type;
+    }
 
     public String getOverview() {
         return overview;
@@ -166,22 +211,11 @@ public class MovieEntity implements Parcelable {
         this.id = id;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public boolean isStatus() {
+        return status;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(overview);
-        dest.writeString(originalLanguage);
-        dest.writeString(originalTitle);
-        dest.writeByte((byte) (video ? 1 : 0));
-        dest.writeString(title);
-        dest.writeString(posterPath);
-        dest.writeString(backdropPath);
-        dest.writeString(releaseDate);
-        dest.writeDouble(voteAverage);
-        dest.writeInt(id);
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }

@@ -3,6 +3,11 @@ package com.fakhrurr.moviecatalogue.data.repository.source;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
+import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
+
+import java.util.List;
+
 import static com.fakhrurr.moviecatalogue.data.repository.source.StatusResponse.EMPTY;
 import static com.fakhrurr.moviecatalogue.data.repository.source.StatusResponse.SUCCESS;
 import static com.fakhrurr.moviecatalogue.data.repository.source.StatusResponse.ERROR;
@@ -35,5 +40,4 @@ public class ApiResponse<T> {
     public static <T> ApiResponse<T> error(String msg, @Nullable T body) {
         return new ApiResponse<>(ERROR, body, msg);
     }
-
 }

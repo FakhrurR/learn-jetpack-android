@@ -1,18 +1,16 @@
 package com.fakhrurr.moviecatalogue.data.local;
 
 import androidx.lifecycle.LiveData;
+import androidx.paging.DataSource;
 
-import com.fakhrurr.moviecatalogue.data.local.entity.MovieDetailEntity;
 import com.fakhrurr.moviecatalogue.data.local.entity.MovieEntity;
 import com.fakhrurr.moviecatalogue.data.local.room.MovieDao;
 
 import java.util.List;
 
-import javax.sql.DataSource;
-
 public class LocalDataSource {
     private static LocalDataSource INSTANCE;
-    private MovieDao movieDao;
+    private final MovieDao movieDao;
 
     private LocalDataSource(MovieDao movieDao) {
         this.movieDao = movieDao;
@@ -29,12 +27,16 @@ public class LocalDataSource {
         return movieDao.getMovies();
     }
 
-    public void insertMovies(List<MovieEntity> movieEntityList) {
-        movieDao.insertMovies(movieEntityList);
+    public LiveData<MovieEntity> getMovieById(int id) {
+       return movieDao.getMovieDetailById(id);
     }
 
-    public LiveData<MovieDetailEntity> getMovieById(int id) {
-       return movieDao.getMovieDetailById(id);
+    public LiveData<MovieEntity> getTVShowById(int id) {
+        return movieDao.getTVShowDetailById(id);
+    }
+
+    public LiveData<List<MovieEntity>> getTVShow() {
+        return movieDao.getTVShows();
     }
 
     public DataSource.Factory<Integer, MovieEntity> getFavoriteMovies() {
@@ -45,7 +47,15 @@ public class LocalDataSource {
         return movieDao.getFavoriteTvShows();
     }
 
+    public void insertMovies(List<MovieEntity> movieEntityList) {
+        movieDao.insertMovies(movieEntityList);
+    }
+
     public void updateFavoriteStatus(MovieEntity movie) {
         movieDao.updateMovie(movie);
+    }
+
+    public int deleteMovie(MovieEntity movieEntity) {
+        return movieDao.deleteMovie(movieEntity);
     }
 }

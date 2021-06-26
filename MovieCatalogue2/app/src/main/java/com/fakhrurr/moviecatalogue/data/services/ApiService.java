@@ -2,6 +2,7 @@ package com.fakhrurr.moviecatalogue.data.services;
 
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.NowPlayingResponse;
+import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.TVAiringTodayResponse;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.detail.DetailTVResponse;
 
@@ -20,5 +21,5 @@ public interface ApiService {
     Call<DetailTVResponse> getDetailTVShow(@Path("tv_id") int id);
 
     @GET("movie/{movie_id}")
-    Call<DetailMovieResponse> getDetailMovie(@Path("movie_id") int id);
+    Call<ResultsItemMovie> getDetailMovie(@Path("movie_id") int id);
 }

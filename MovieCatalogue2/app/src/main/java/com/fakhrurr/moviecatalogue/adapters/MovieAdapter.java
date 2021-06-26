@@ -10,18 +10,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fakhrurr.moviecatalogue.R;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
+import com.fakhrurr.moviecatalogue.data.local.entity.MovieEntity;
 import com.fakhrurr.moviecatalogue.databinding.ItemListMovieBinding;
 import com.fakhrurr.moviecatalogue.ui.DetailMovieActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static com.fakhrurr.moviecatalogue.data.services.ApiConfig.BASE_URL_IMAGE;
+import static com.fakhrurr.moviecatalogue.utils.Constants.BASE_URL_IMAGE;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHolder> {
-    private final ArrayList<ResultsItemMovie> listMovies = new ArrayList<>();
+    private final ArrayList<MovieEntity> listMovies = new ArrayList<>();
 
-    public void setMovies(ArrayList<ResultsItemMovie> listCourses) {
+    public void setMovies(List<MovieEntity> listCourses) {
         if (listCourses == null) return;
         this.listMovies.clear();
         this.listMovies.addAll(listCourses);
@@ -36,7 +37,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.MovieViewHolder holder, int position) {
-        ResultsItemMovie resultsItem = listMovies.get(position);
+        MovieEntity resultsItem = listMovies.get(position);
         holder.bind(resultsItem);
     }
 
@@ -53,7 +54,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             this.binding = binding;
         }
 
-        void bind(ResultsItemMovie resultsItem) {
+        void bind(MovieEntity resultsItem) {
             binding.titleName.setText(resultsItem.getTitle());
             binding.dateMovie.setText(resultsItem.getReleaseDate());
             binding.rate.setText(String.valueOf(resultsItem.getVoteAverage()));
@@ -61,6 +62,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             itemView.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), DetailMovieActivity.class);
                 intent.putExtra(DetailMovieActivity.EXTRA_COURSE, resultsItem.getId());
+                intent.putExtra(DetailMovieActivity.EXTRA_TYPE, resultsItem.getType());
                 itemView.getContext().startActivity(intent);
             });
             Glide.with(itemView.getContext())

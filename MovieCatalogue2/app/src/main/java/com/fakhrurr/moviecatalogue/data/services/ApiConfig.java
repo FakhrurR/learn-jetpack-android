@@ -9,10 +9,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiConfig {
-    public static String BASE_URL = "https://api.themoviedb.org/3/";
-    public static String BASE_URL_IMAGE = "https://image.tmdb.org/t/p/w342/";
+import static com.fakhrurr.moviecatalogue.utils.Constants.BASE_URL;
 
+public class ApiConfig {
     public static ApiService getApiService() {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY);

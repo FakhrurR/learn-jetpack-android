@@ -1,35 +1,54 @@
 package com.fakhrurr.moviecatalogue.viewmodel;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 import androidx.lifecycle.ViewModel;
 
-import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
-import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
+import com.fakhrurr.moviecatalogue.data.local.entity.MovieEntity;
 import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
+import com.fakhrurr.moviecatalogue.vo.Resource;
 
-import java.util.List;
+import static com.fakhrurr.moviecatalogue.utils.Constants.MOVIE_TYPE;
+import static com.fakhrurr.moviecatalogue.utils.Constants.TV_SHOW_TYPE;
 
 public class DetailMovieModel extends ViewModel {
-    private final MovieRepository movieRepository;
-    private int movieId;
+    private MovieRepository movieRepository;
+    private final MutableLiveData<Integer> id = new MutableLiveData<>();
+    private LiveData<Resource<MovieEntity>> result;
+    private int type;
+    public LiveData<Resource<MovieEntity>> detail = Transformations.switchMap(id, data -> {
+        switch (type) {
+            case MOVIE_TYPE:
+                result = movieRepository.getDetailMovieResponse(getId());
+                break;
+            case TV_SHOW_TYPE:
+                result = movieRepository.getDetailTVShowResponse(getId());
+        }
+        return result;
+    });
 
-    public DetailMovieModel(MovieRepository repository) {
-        this.movieRepository = repository;
+    public DetailMovieModel(MovieRepository movieRepository) {
+        this.movieRepository = movieRepository;
     }
 
-    public void setSelectedMovie(int movieId) {
-        this.movieId = movieId;
+    public int getId() {
+        return id.getValue() != null ? id.getValue(): 2;
     }
 
-    public LiveData<List<ResultsItemMovie>> getNowPlaying() {
-        return movieRepository.getListNowPlaying();
+    public void setId(int id) {
+        this.id.setValue(id);
     }
 
-    public LiveData<DetailMovieResponse> getDetailMovie() {
-        return movieRepository.getDetailMovieResponse(movieId);
+    public void setType(int type) {
+        this.type = type;
     }
 
-    public LiveData<Boolean> isLoading() {
-        return movieRepository.isLoading();
+    public void setFavorite() {
+        if (detail.getValue() != null) {
+            MovieEntity entity = detail.getValue().data;
+            assert entity != null;
+            movieRepository.setFavoriteStatus(entity);
+        }
     }
 }

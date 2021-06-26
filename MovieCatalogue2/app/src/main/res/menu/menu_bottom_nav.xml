@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/tab_movie"
+        android:title="@string/label_movie"
+        android:icon="@drawable/ic_baseline_local_movies_24"
+     />
+
+    <item
+        android:id="@+id/tab_tv_show"
+        android:title="@string/label_tv_show"
+        android:icon="@drawable/ic_baseline_live_tv_24"
+        />
+    <item
+        android:id="@+id/tab_fav"
+        android:title="@string/label_favorite"
+        android:icon="@drawable/ic_baseline_local_activity_24"
+        />
+</menu>

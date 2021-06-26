@@ -4,9 +4,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+import com.fakhrurr.moviecatalogue.data.local.entity.MovieEntity;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
-import com.fakhrurr.moviecatalogue.data.repository.TvShowRepository;
+import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
 import com.fakhrurr.moviecatalogue.utils.DummyData;
+import com.fakhrurr.moviecatalogue.utils.FakeDataDummy;
+import com.fakhrurr.moviecatalogue.vo.Resource;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -16,8 +19,11 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.List;
 
+import static com.fakhrurr.moviecatalogue.utils.Constants.MOVIE_TYPE;
+import static com.fakhrurr.moviecatalogue.utils.Constants.TV_SHOW_TYPE;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -26,7 +32,7 @@ public class TvShowViewModelTest {
     public InstantTaskExecutorRule instantTaskExecutorRule = new InstantTaskExecutorRule();
     private TvShowViewModel tvShowViewModel;
     @Mock
-    private TvShowRepository repository;
+    private MovieRepository repository;
 
     @Mock
     private Observer<List<ResultsItemTVAiringToday>> observer;
@@ -38,18 +44,16 @@ public class TvShowViewModelTest {
     }
 
     @Test
-    public void getTVAiringToday() {
-        List<ResultsItemTVAiringToday> dummyAiringToday = DummyData.generateDummyTVAiringToday();
-        MutableLiveData<List<ResultsItemTVAiringToday>> resultsItemTVAiringTodays = new MutableLiveData<>();
-        resultsItemTVAiringTodays.setValue(dummyAiringToday);
+    public void testGetTVAiringToday() {
+        Resource<List<MovieEntity>> dummyTVShow = Resource.success(FakeDataDummy.getTvShows());
+        MutableLiveData<Resource<List<MovieEntity>>> tvShows = new MutableLiveData<>();
+        tvShows.setValue(dummyTVShow);
 
-        when(repository.getListTVAiringToday()).thenReturn(resultsItemTVAiringTodays);
-        List<ResultsItemTVAiringToday> resultsItemTVAiringToday = tvShowViewModel.getAiringToday().getValue();
-        verify(repository).getListTVAiringToday();
-        assertNotNull(resultsItemTVAiringToday);
-        assertEquals(20, resultsItemTVAiringToday.size());
+        when(repository.getListAiringToday()).thenReturn(tvShows);
+        Observer<Resource<List<MovieEntity>>> observer = mock(Observer.class);
 
-        tvShowViewModel.getAiringToday().observeForever(observer);
-        verify(observer).onChanged(dummyAiringToday);
+        tvShowViewModel.setType(TV_SHOW_TYPE);
+        tvShowViewModel.tvShows.observeForever(observer);
+        verify(observer).onChanged(dummyTVShow);
     }
 }

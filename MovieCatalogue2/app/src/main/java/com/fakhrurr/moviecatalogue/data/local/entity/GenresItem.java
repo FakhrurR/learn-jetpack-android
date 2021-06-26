@@ -4,14 +4,27 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
+@Entity(tableName = "genre_entity")
 public class GenresItem implements Parcelable {
+    @Embedded
+    private MovieEntity movieEntity;
+
     @ColumnInfo(name = "name")
+    @SerializedName("name")
     private String name;
 
-    @ColumnInfo(name = "id")
+    @PrimaryKey
+    @ColumnInfo(name = "movieId")
+    @SerializedName("id")
     private int id;
 
     public GenresItem(String name, int id) {

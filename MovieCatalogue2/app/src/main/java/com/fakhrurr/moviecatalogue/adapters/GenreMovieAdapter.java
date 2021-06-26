@@ -6,15 +6,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fakhrurr.moviecatalogue.data.local.entity.GenresItem;
 import com.fakhrurr.moviecatalogue.data.model.movie.detail.GenresItemNowPlaying;
 import com.fakhrurr.moviecatalogue.databinding.ItemGenreBinding;
 
 import java.util.ArrayList;
 
 public class GenreMovieAdapter extends RecyclerView.Adapter<GenreMovieAdapter.ViewHolder> {
-    private final ArrayList<GenresItemNowPlaying> genresItemList = new ArrayList<>();
+    private final ArrayList<GenresItem> genresItemList = new ArrayList<>();
 
-    public void setGenresItemList(ArrayList<GenresItemNowPlaying> genresItemLists) {
+    public void setGenresItemList(ArrayList<GenresItem> genresItemLists) {
         if (genresItemLists == null) return;
         this.genresItemList.clear();
         this.genresItemList.addAll(genresItemLists);
@@ -29,7 +30,7 @@ public class GenreMovieAdapter extends RecyclerView.Adapter<GenreMovieAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull GenreMovieAdapter.ViewHolder holder, int position) {
-        GenresItemNowPlaying genresItem = genresItemList.get(position);
+        GenresItem genresItem = genresItemList.get(position);
         holder.bind(genresItem);
     }
 
@@ -46,7 +47,7 @@ public class GenreMovieAdapter extends RecyclerView.Adapter<GenreMovieAdapter.Vi
             this.itemGenreBinding = itemGenreBinding;
         }
 
-        public void bind(GenresItemNowPlaying genresItem) {
+        public void bind(GenresItem genresItem) {
             itemGenreBinding.titleGenre.setText(genresItem.getName());
         }
     }

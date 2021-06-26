@@ -8,10 +8,12 @@ import android.view.ViewParent;
 import androidx.test.core.app.ActivityScenario;
 import androidx.test.espresso.IdlingRegistry;
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.contrib.NavigationViewActions;
 import androidx.test.espresso.contrib.RecyclerViewActions;
 import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner;
 
 import com.fakhrurr.moviecatalogue.R;
+import com.fakhrurr.moviecatalogue.data.local.entity.MovieEntity;
 import com.fakhrurr.moviecatalogue.data.model.movie.nowplaying.ResultsItemMovie;
 import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
 import com.fakhrurr.moviecatalogue.utils.DummyData;
@@ -21,6 +23,7 @@ import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
 import org.junit.After;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,8 +41,8 @@ import static org.hamcrest.Matchers.allOf;
 @RunWith(AndroidJUnit4ClassRunner.class)
 public class MainActivityTest {
 
-    private final List<ResultsItemMovie> dummyNowPlay = DummyData.generateDummyNowPlaying();
-    private final List<ResultsItemTVAiringToday> dummyAiringToday = DummyData.generateDummyTVAiringToday();
+    private final List<MovieEntity> dummyNowPlay = DummyData.getMovies();
+    private final List<MovieEntity> dummyAiringToday = DummyData.getTvShows();
 
     private static Matcher<View> childAtPosition(
             final Matcher<View> parentMatcher, final int position) {
@@ -71,50 +74,57 @@ public class MainActivityTest {
         IdlingRegistry.getInstance().unregister(EspressoIdlingResource.getEspressoIdlingResource());
     }
 
-
     @Test
     public void testValidationViewTab() {
-        onView(withId(R.id.tabs)).check(matches(isDisplayed()));
-        onView(withId(R.id.view_pager)).check(matches(isDisplayed()));
-
-        ViewInteraction tabView = onView(
-                allOf(withContentDescription("Movie"),
+        onView(allOf(withId(R.id.tabs), isDisplayed()));
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.tab_tv_show), withContentDescription("TV Show"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.tabs),
                                         0),
                                 1),
                         isDisplayed()));
-        tabView.perform(click());
+        bottomNavigationItemView.perform(click());
 
-        ViewInteraction tabViewTV = onView(
-                allOf(withContentDescription("TV Show"),
+        ViewInteraction bottomNavigationItemView2 = onView(
+                allOf(withId(R.id.tab_fav), withContentDescription("Favorite"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.tabs),
+                                        0),
+                                2),
+                        isDisplayed()));
+        bottomNavigationItemView2.perform(click());
+
+        ViewInteraction bottomNavigationItemView3 = onView(
+                allOf(withId(R.id.tab_movie), withContentDescription("Movie"),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.tabs),
                                         0),
                                 0),
                         isDisplayed()));
-        tabViewTV.perform(click());
+        bottomNavigationItemView3.perform(click());
     }
 
     @Test
     public void loadNowPlaying() {
-        ViewInteraction tabView = onView(
-                allOf(withContentDescription("Movie"),
-                        childAtPosition(
-                                childAtPosition(
-                                        withId(R.id.tabs),
-                                        0),
-                                1),
-                        isDisplayed()));
-        tabView.perform(click());
         onView(allOf(withId(R.id.rv_movie), isDisplayed()));
         onView(withId(R.id.rv_movie)).perform(RecyclerViewActions.scrollToPosition(dummyNowPlay.size()));
     }
 
     @Test
     public void loadTVAiringToday() {
+        ViewInteraction bottomNavigationItemView = onView(
+                allOf(withId(R.id.tab_tv_show), withContentDescription("TV Show"),
+                        childAtPosition(
+                                childAtPosition(
+                                        withId(R.id.tabs),
+                                        0),
+                                1),
+                        isDisplayed()));
+        bottomNavigationItemView.perform(click());
         onView(allOf(withId(R.id.rv_tv_show), isDisplayed()));
         onView(withId(R.id.rv_tv_show)).perform(RecyclerViewActions.scrollToPosition(dummyAiringToday.size()));
     }

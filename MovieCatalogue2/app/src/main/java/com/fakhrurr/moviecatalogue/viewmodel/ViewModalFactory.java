@@ -10,20 +10,20 @@ import androidx.lifecycle.ViewModelProvider;
 import com.fakhrurr.moviecatalogue.data.repository.MovieRepository;
 import com.fakhrurr.moviecatalogue.di.Injection;
 
-public class MovieModalFactory extends ViewModelProvider.NewInstanceFactory {
+public class ViewModalFactory extends ViewModelProvider.NewInstanceFactory {
     @SuppressLint("StaticFieldLeak")
-    private static volatile MovieModalFactory INSTANCE;
+    private static volatile ViewModalFactory INSTANCE;
     private final MovieRepository repository;
     private Context mContext;
 
-    public MovieModalFactory(MovieRepository repository) {
+    public ViewModalFactory(MovieRepository repository) {
         this.repository = repository;
     }
 
-    public static MovieModalFactory getINSTANCE(Context context) {
+    public static ViewModalFactory getINSTANCE(Context context) {
         if (INSTANCE == null) {
             synchronized (MovieRepository.class) {
-                INSTANCE = new MovieModalFactory(Injection.provideMovieRepository(context));
+                INSTANCE = new ViewModalFactory(Injection.provideMovieRepository(context));
             }
         }
         return INSTANCE;
@@ -39,6 +39,18 @@ public class MovieModalFactory extends ViewModelProvider.NewInstanceFactory {
         } else if (modelClass.isAssignableFrom(DetailMovieModel.class)) {
             //noinspection unchecked
             return (T) new DetailMovieModel(repository);
+        } else if(modelClass.isAssignableFrom(TvShowViewModel.class)) {
+            //noinspection unchecked
+            return (T) new TvShowViewModel(repository);
+        } else if(modelClass.isAssignableFrom(DetailTVShowModel.class)) {
+            //noinspection unchecked
+            return (T) new DetailTVShowModel(repository);
+        } else if(modelClass.isAssignableFrom(FavoriteMovieViewModel.class)) {
+            //noinspection unchecked
+            return (T) new FavoriteMovieViewModel(repository);
+        } else if(modelClass.isAssignableFrom(FavoriteTvShowViewModel.class)) {
+            //noinspection unchecked
+            return (T) new FavoriteTvShowViewModel(repository);
         }
 
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());

@@ -10,18 +10,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.fakhrurr.moviecatalogue.R;
-import com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday.ResultsItemTVAiringToday;
+import com.fakhrurr.moviecatalogue.data.local.entity.MovieEntity;
 import com.fakhrurr.moviecatalogue.databinding.ItemListMovieBinding;
+import com.fakhrurr.moviecatalogue.ui.DetailMovieActivity;
 import com.fakhrurr.moviecatalogue.ui.DetailTvShowActivity;
 
 import java.util.ArrayList;
+import java.util.List;
 
-import static com.fakhrurr.moviecatalogue.data.services.ApiConfig.BASE_URL_IMAGE;
+import static com.fakhrurr.moviecatalogue.utils.Constants.BASE_URL_IMAGE;
 
 public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.ViewHolder> {
-    private final ArrayList<ResultsItemTVAiringToday> listTvShows = new ArrayList<>();
+    private final ArrayList<MovieEntity> listTvShows = new ArrayList<>();
 
-    public void setTVShow(ArrayList<ResultsItemTVAiringToday> listTvShow) {
+    public void setTVShow(List<MovieEntity> listTvShow) {
         if (listTvShow == null) return;
         this.listTvShows.clear();
         this.listTvShows.addAll(listTvShow);
@@ -36,7 +38,7 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull TVShowAdapter.ViewHolder holder, int position) {
-        ResultsItemTVAiringToday resultsItem = listTvShows.get(position);
+        MovieEntity resultsItem = listTvShows.get(position);
         holder.bind(resultsItem);
     }
 
@@ -53,14 +55,15 @@ public class TVShowAdapter extends RecyclerView.Adapter<TVShowAdapter.ViewHolder
             this.binding = binding;
         }
 
-        public void bind(ResultsItemTVAiringToday resultsItem) {
-            binding.titleName.setText(resultsItem.getName());
-            binding.dateMovie.setText(resultsItem.getFirstAirDate());
+        public void bind(MovieEntity resultsItem) {
+            binding.titleName.setText(resultsItem.getTitle());
+            binding.dateMovie.setText(resultsItem.getReleaseDate());
             binding.rate.setText(String.valueOf(resultsItem.getVoteAverage()));
             binding.descriptionName.setText(resultsItem.getOverview());
             binding.cardItem.setOnClickListener(v -> {
                 Intent intent = new Intent(itemView.getContext(), DetailTvShowActivity.class);
-                intent.putExtra(DetailTvShowActivity.EXTRA_COURSE, resultsItem.getId());
+                intent.putExtra(DetailMovieActivity.EXTRA_COURSE, resultsItem.getId());
+                intent.putExtra(DetailMovieActivity.EXTRA_TYPE, resultsItem.getType());
                 itemView.getContext().startActivity(intent);
             });
             Glide.with(itemView.getContext())

@@ -1,5 +1,7 @@
 package com.fakhrurr.moviecatalogue.data.model.tvshow.airingtoday;
 
+import com.fakhrurr.moviecatalogue.data.local.entity.GenresItem;
+import com.fakhrurr.moviecatalogue.data.model.movie.detail.GenresItemNowPlaying;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -44,6 +46,17 @@ public class ResultsItemTVAiringToday {
 
     @SerializedName("vote_count")
     private int voteCount;
+
+    public List<GenresItem> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<GenresItem> genres) {
+        this.genres = genres;
+    }
+
+    @SerializedName("genres")
+    private List<GenresItem> genres;
 
     public String getFirstAirDate() {
         return firstAirDate;

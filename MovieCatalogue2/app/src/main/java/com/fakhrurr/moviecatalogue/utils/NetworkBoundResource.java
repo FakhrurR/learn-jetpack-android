@@ -3,7 +3,7 @@ package com.fakhrurr.moviecatalogue.utils;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MediatorLiveData;
 
-import com.fakhrurr.moviecatalogue.data.model.movie.detail.DetailMovieResponse;
+import com.fakhrurr.moviecatalogue.data.local.entity.MovieEntity;
 import com.fakhrurr.moviecatalogue.data.repository.source.ApiResponse;
 import com.fakhrurr.moviecatalogue.vo.Resource;
 
@@ -81,7 +81,7 @@ public abstract class NetworkBoundResource<ResultType, RequestType> {
         });
     }
 
-    public LiveData<Resource<DetailMovieResponse>> asLiveData() {
+    public LiveData<Resource<ResultType>> asLiveData() {
         return result;
     }
 }

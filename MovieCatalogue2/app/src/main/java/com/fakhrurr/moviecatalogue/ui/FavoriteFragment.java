@@ -13,11 +13,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.fakhrurr.moviecatalogue.R;
+import com.fakhrurr.moviecatalogue.adapters.SectionsPagerAdapter;
+import com.fakhrurr.moviecatalogue.databinding.FavoriteFragmentBinding;
+import com.fakhrurr.moviecatalogue.databinding.MovieFragmentBinding;
 import com.fakhrurr.moviecatalogue.viewmodel.FavoriteViewModel;
 
 public class FavoriteFragment extends Fragment {
 
     private FavoriteViewModel mViewModel;
+    private FavoriteFragmentBinding favoriteFragmentBinding;
 
     public static FavoriteFragment newInstance() {
         return new FavoriteFragment();
@@ -26,14 +30,15 @@ public class FavoriteFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.favorite_fragment, container, false);
+        favoriteFragmentBinding = FavoriteFragmentBinding.inflate(getLayoutInflater());
+        return favoriteFragmentBinding.getRoot();
     }
 
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mViewModel = new ViewModelProvider(this).get(FavoriteViewModel.class);
-        // TODO: Use the ViewModel
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(getActivity(), getChildFragmentManager());
+        favoriteFragmentBinding.viewPager.setAdapter(sectionsPagerAdapter);
+        favoriteFragmentBinding.tabsFav.setupWithViewPager(favoriteFragmentBinding.viewPager);
     }
-
 }
